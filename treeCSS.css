@@ -1,0 +1,78 @@
+@CHARSET "ISO-8859-1";
+/*body
+{
+margin:0;
+padding:0;
+}*/
+div{
+margin:0;
+padding:0;
+}
+a:hover{
+	font-style:italic;
+	cursor:pointer; 
+	cursor:hand;
+}
+a{
+	font-style:italic;
+	font-weight:bold;
+	/*color:green;*/
+	cursor:pointer; 
+	cursor:hand;
+}
+.DIVElementNode {
+	position:relative;
+	left:5px;
+	border:1px;
+	margin:5px;
+	padding-right:5px;
+	border-style:solid;
+}
+sections{
+display:yes;
+}
+#editElement
+{
+border:0px;
+}
+.BTNDownUp{
+margin:0;
+padding:0;
+margin-left:5px;
+}
+.BTNElementNode{
+margin-left:5px;
+}
+.DIVElementNode
+{
+	border-color:#CCCCCC;
+}
+.textElement{
+	border:0px;
+	backgroung:#ECE9D8;
+}
+/*textarea{
+	top:-2;
+	height:450px;
+	width:100%;
+	height:100%;
+	text-align:left;
+	font-size: 20px;
+	font-style: normal;
+	line-height: 1.5em;
+	max-height:500px;
+	border-style:solid;
+	border-color:#CCCCCC
+}*/
+/*textarea{
+	font-size: 20px;
+	font-style: normal;
+	line-height: 1.5em;
+	width:100%;
+	height:1px;
+}*/
+
+#edit{
+boder:0px;
+color:green;
+}

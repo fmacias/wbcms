@@ -1,0 +1,67 @@
+*{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+body
+{
+	margin:0 auto;
+	font-size:100%;
+}
+#objSelectContainer
+{
+	position:relative;
+	right:0;
+}
+#objSelectContainer #objContainer
+{
+	position:absolute;
+	top:0;
+	height:30px;
+}
+/*#objContainer #items*/
+#selectedItem{
+position:relative;
+}
+#items
+{
+position:absolute;
+top:0x;
+left:0;
+background:white;
+z-index:2;
+margin:0;
+border-style:solid;
+border-width:1px;
+padding:0;
+margin:0;
+}
+#items .SelectItem
+{
+	background:white;
+	padding:0;
+	margin:0;
+	/*padding:5px 0 5px 0;*/
+}
+.SelectItem:hover, #objContainer:hover{
+	cursor:pointer; 
+	cursor:hand;
+}
+#selectedItem:hover{
+	cursor:pointer; 
+	cursor:hand;
+	border-color:white;
+	border-style:inset;
+	border-width:2px;
+/*padding:5px 0 5px 0;*/
+}
+#objContainer #btnSelector{
+/*position:relative;
+left:10px;*/
+}
+#selectedValue{
+color:white;
+}
+a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	background:#ECE9D8;
+}

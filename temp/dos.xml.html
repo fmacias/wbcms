@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body>
+<ul class="processingIntruction">&lt;? xml-stylesheettype="text/xsl" href="xmltree.xsl" &gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Projeckt</span> <span class="attName">Name</span>="<span class="attValue">dos</span>"
+ <span class="attName">Folder</span>="<span class="attValue">dos</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Templates</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.gara.net</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/gara99.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;gara99.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.lablue.de</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/lablue25.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;lablue25.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.zitty.de</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/zitty.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;zitty.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.elpais.es</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/elpais.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;elpais.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.wunderbit.com/DTDs/HTML5.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/html5.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;html5.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.wunderbit.com/DTDs/XHTMLStrict.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/xhtmlStrict.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;xhtmlStrict.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.google.com</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/google.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;google.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.lablue.de</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/lablue.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;lablue.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.lablue.de</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/lablue4.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;lablue4.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">www.poppen.de</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/wbcms/projects/dos/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/wbcms/projects/dos/Templates/poppen.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">wbcms/projects/dos/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">utf-8</span>"
+&gt;poppen.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>&lt;<span class="nodeName">Templates</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Pages</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">garaTemplate/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/garaTemplate/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/garaTemplate/garaTemp2.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">garaTemplate/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;garaTemp2.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://www.wunderbit.com/wbcms/projects/dos/Templates/gara99.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">lablue/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/lablue/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/lablue/lablue2.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">lablue/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;lablue2.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://www.wunderbit.com/wbcms/projects/dos/Templates/lablue25.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">lablue/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/lablue/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/lablue/lablue3.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">lablue/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;lablue3.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://www.wunderbit.com/wbcms/projects/dos/Templates/lablue4.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">popi/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/popi/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/popi/popi.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">popi/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">utf-8</span>"
+&gt;popi.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://www.wunderbit.com/wbcms/projects/dos/Templates/poppen.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>&lt;<span class="nodeName">Pages</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">XMLFiles</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.felixgolubov.com/XMLEditor/xml/Wild-xsd-groups/Wild-xsd-groups.xml</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/example/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/example/wuaka.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">example/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;wuaka.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.felixgolubov.com/XMLEditor/xml/Ejb-jar/ejb-jar.xml</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/example/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/example/dos.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">example/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;dos.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://rss2.focus.de/c/32191/f/443312/index.rss</span>"
+ <span class="attName">Path</span>="<span class="attValue">/kunden/homepages/41/d168271039/htdocs/rss/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://www.wunderbit.com/rss/focus.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">rss/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;focus.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>&lt;<span class="nodeName">XMLFiles</span>/&gt;</ul>&lt;<span class="nodeName">Projeckt</span>/&gt;</ul>
+</body>
+</html>

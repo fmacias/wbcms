@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="DOMFunctions.js"></script>
+<script type="text/javascript" src="WAjax2.js"></script>
+<script type="text/javascript" src="divEfects.js"></script>
+<script type="text/javascript" src="wcms.js"></script>
+<script language="JavaScript">
+var oTemplates = null;
+var oPages = null;
+/*var oSelectedRows = {
+		table:new Object(),
+		Rows: new Array(),
+		setRow:function(oRow)
+		{
+			this.Rows.push(oRow);	
+		},
+		unsetRow:function(oRow)
+		{
+			for (var x=0;x<this.Rows.length;x++)
+			{
+				if (this.Rows[x]!=null)
+				{
+					if (this.Rows[x].rowIndex==oRow.rowIndex)
+					{
+						this.Rows[x] = null;
+						break;
+					}
+				}
+			}	
+		},
+		setTable:function(HTMLTableElement){
+			this.table = HTMLTableElement;	
+		},
+		removeSelectedRows:function (){
+			for (var x=0;x<this.Rows.length;x++)
+			{
+				if (this.Rows[x]!=null)
+				{
+					var currentRowIndex = this.Rows[x].rowIndex;
+					this.table.deleteRow(currentRowIndex);
+					//this.removeTemplate(this.Rows[x]);
+					var bRemoved = this.removePage(this.Rows[x]);
+					this.Rows[x] = null;
+				}
+			}			
+		},
+		removePage:function(oRow)
+		{
+			if (!(oRow.childNodes[5]))
+			{
+				return false;
+			}
+			var oCell5 =  oRow.childNodes[5];
+			if (!(oCell5.childNodes[1])){
+				return false;
+			}
+			var FileNameId = oCell5.childNodes[1];
+						
+			if (FileNameId.value !=""){
+				var RQSTRemovePage = new AJAXTransport();
+				RQSTRemovePage.XMLHttpRequest.reply.onReply=function()
+				{
+					textReply = RQSTRemovePage.XMLHttpRequest.reply.Text
+					if (textReply !="")
+					{
+						var oJSONReply = eval("(" +RQSTRemovePage.XMLHttpRequest.reply.Text + ")");
+						if (!(oJSONReply.Error))
+						{
+							alert(oJSONReply);
+							return true;	
+						}
+					}
+				};
+				RQSTRemovePage.requestSendForm("FileNameId="+FileNameId.value,"removePage.php");
+			}
+		}		
+}*/
+function HTMLSelect(aArrayIn,sDefaultValue) 
+{
+	this.oSelect = createHTMLElement("select",null,null,null,null);
+	this.DefaultValue = "";
+	this.addOptions= function(oFiles,sDefaultValue)
+	{
+		try
+		{
+			for (var x in oFiles)
+			{
+				var oHTMLOption = createHTMLElement("option",null,null,null,null,null,null);
+				var url = oFiles[x].sHttpPath+oFiles[x].sFilename;
+				oHTMLOption.value=url;
+				//oHTMLOption.text =url;
+				oHTMLOption.text =oFiles[x].sFilename;
+				if (sDefaultValue == url)
+				{
+					oHTMLOption.setAttribute("defaultSelected","true");
+				}
+				this.oSelect.add(oHTMLOption,null);
+			}
+			var oHTMLOption = createHTMLElement("option",null,null,null,null,null,null);
+			oHTMLOption.value="";
+			oHTMLOption.text = "";
+			//oHTMLOption.style.overflow="show";
+			this.oSelect.add(oHTMLOption,null);
+		}catch(e){
+			alert("\Error name: "+e.name+", message:"+e.message+", Description:"+e.description);
+		}
+	};
+}
+document.DOMLoaded=function()
+{
+	requestTemplates();
+//	oSelectedRows.setTable(document.getElementById("gridDataFiles"));
+	//requestPages();
+}
+function requestTemplates()
+{
+	var RQSTTemplates = new AJAXTransport();
+	RQSTTemplates.reply.onReply=function()
+	{
+		try
+		{
+			try
+			{
+				var oJSONTemplates =eval("(" +this.Text + ")");
+			}catch(e){
+				throw new Error("Server Error: "+this.Text);
+			}
+			oTemplates = oJSONTemplates;
+			requestPages();
+		}catch(e){
+			throw new Error("mainPages.html->requestTemplates-> Error: "+e.message);
+		}
+	};
+	RQSTTemplates.request('http://www.wunderbit.com/wbcms/requestTemplates.php');//sync
+}
+function requestPages()
+{
+	var RQSTPages = new AJAXTransport();
+	RQSTPages.reply.onReply=function()
+	{
+		try
+		{
+			try
+			{
+				var oJSONPages =eval("(" +this.Text + ")");
+			}catch(e){
+				throw new Error("Server Error: "+this.Text);
+			}
+			oPages = oJSONPages;
+			foreachAddPageRow(oPages);
+		}catch(e){
+			throw new Error("mainPages.html->requestPages-> Error: "+e.message);
+		}
+	};
+	RQSTPages.request('http://www.wunderbit.com/wbcms/requestPages.php');
+}
+function foreachAddPageRow(oPages)
+{
+	for (var x in oPages)
+	{
+		addNewRowPage(oPages[x]);
+	}
+}
+function addNewRowPage(oPage)
+{
+//	rowCounter++;
+	var oHTMLTable=document.getElementById("gridDataFiles");
+	if (oHTMLTable)
+	{
+		//rowCounter = oHTMLTable.tBodies[0].getElementsByTagName("TR").length;
+		rowCounter = oHTMLTable.rows.length;
+		rowIndex = (rowCounter==0)?0:rowCounter--;
+		
+		if (!(oPage))
+		{
+			var TemplateBase= "";
+			var PageName = "defaultName"+rowIndex.toString();
+			var fileNameId = "";
+			var folderName = "";
+		}else
+		{
+			var TemplateBase= oPage.sTemplateFileName;
+			var PageName = oPage.sFilename;
+			var fileNameId = oPage.sFolder+PageName;
+			var folderName = oPage.sFolder;
+		}
+		var cellIndex = 0; 
+		//var currentRow = oHTMLTable.tBodies[0].insertRow(rowIndex);
+		var currentRow = oHTMLTable.insertRow(rowIndex);
+
+		/*var currentCell = currentRow.insertCell(cellIndex);
+		//
+		currentCell.setAttribute("bgcolor","#EEEEEE");
+		currentCell.setAttribute("align","center");
+		var oInput1 = createHTMLElement("input",null,null,null,null,null,'TYPE=checkBox,NAME=RowId_'+rowIndex.toString()+",value=RowId_"+rowIndex.toString());
+		oInput1.onclick = function()
+		{
+			if (this.checked ==true)
+			{
+				oSelectedRows.setRow(currentRow);
+			}else{
+				oSelectedRows.unsetRow(currentRow);
+			}
+		}
+		//
+		//oInput1.setAttribute('onchange','alert(this.checked)');
+		currentCell.appendChild(oInput1);
+		cellIndex++;*/
+		//
+		var currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#CCCCCC");
+		currentCell.setAttribute("align","center");
+
+		//var oInput1 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=text,NAME=BasedURL'+rowIndex.toString()+",value="+TemplateBase);
+		var Templates1 = new HTMLSelect();
+		Templates1.addOptions(oTemplates,TemplateBase);
+		Templates1.oSelect.value = TemplateBase;
+		Templates1.oSelect.name = "BasedURL"+rowIndex.toString();
+		//Templates1.oSelect.style.width = "99%";
+		currentCell.appendChild(Templates1.oSelect);
+		cellIndex++;
+
+		/*currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#EEEEEE");
+		currentCell.setAttribute("align","center");
+		var oInput2 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=strict4'+rowIndex.toString());
+		oInput2.setAttribute('onclick','disableBasedURL('+rowIndex+',this)');
+		currentCell.appendChild(oInput2);
+		cellIndex++;
+
+		currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#CCCCCC");
+		currentCell.setAttribute("align","center");
+		var oInput3 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=strict1'+rowIndex.toString());
+		oInput3.setAttribute('onclick','disableBasedURL('+rowIndex+',this)');
+		currentCell.appendChild(oInput3);
+		cellIndex++;
+
+		currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#EEEEEE");
+		currentCell.setAttribute("align","center");
+		var oInput4 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=transitional1'+rowIndex.toString());
+		oInput4.setAttribute('onclick','disableBasedURL('+rowIndex+',this)');
+		currentCell.appendChild(oInput4);
+		cellIndex++;*/
+		currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#CCCCCC");
+		currentCell.setAttribute("align","center");
+		var oInput4 = createHTMLElement("input",null,null,null,null,"width:99%",'TYPE=text,NAME=foderName'+rowIndex.toString()+",value="+folderName);//"width:98%"
+		currentCell.appendChild(oInput4);
+		cellIndex++;
+		
+		currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#CCCCCC");
+		currentCell.setAttribute("align","center");
+		var oInput5 = createHTMLElement("input",null,null,null,null,"width:99%",'TYPE=text,NAME=PageName'+rowIndex.toString()+",value="+PageName);//"width:98%"
+		currentCell.appendChild(oInput5);
+
+		var oInputHidden = createHTMLElement("input",null,null,null,null,null,'TYPE=hidden,NAME=FileName_Id_'+rowIndex.toString()+",value="+fileNameId);
+		currentCell.appendChild(oInputHidden);
+		cellIndex++;
+
+		var currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#EEEEEE");
+		currentCell.setAttribute("align","center");
+		var oInput7 = createHTMLElement("input",null,null,null,null,"width:99%",'TYPE=text,NAME=UserName'+rowIndex.toString()+",value=");//"width:98%"
+		currentCell.appendChild(oInput7);
+		cellIndex++;
+		
+		var currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#CCCCCC");
+		currentCell.setAttribute("align","center");
+		var oInput8 = createHTMLElement("input",null,null,null,null,"width:99%",'TYPE=password,NAME=Password'+rowIndex.toString()+",value=");//"width:98%"
+		currentCell.appendChild(oInput8);
+		cellIndex++;
+
+		currentCell = currentRow.insertCell(cellIndex);
+		currentCell.setAttribute("bgcolor","#EEEEEE");
+		currentCell.setAttribute("align","center");
+		var oA = createHTMLElement("a","SAVE",null,null,null,"border:1px solid black;margin:0 3px 0 3px",null);
+		oA.onclick = function(){
+			var URLTemplate = Templates1.oSelect.value;
+			var sFolderName = oInput4.value;
+			/*var DTD = (oInput2.checked)?"strict4":"";
+			DTD = (oInput3.checked)?"strict1":DTD;
+			DTD = (oInput4.checked)?"transitional1":DTD;*/
+			var sFilename = oInput5.value;
+			var FileNameId = oInputHidden.value;
+			var RQSTMainPages = new AJAXTransport();
+			var UserName = oInput7.value;
+			var Password = oInput8.value;
+			RQSTMainPages.reply.onReply=function()
+			{
+				try
+				{
+					try
+					{
+						var oJSONCurrentPage =eval("(" +this.Text + ")");
+					}catch(e)
+					{
+						showErrorDisableLayer(disableLayer,this.Text);
+						return;
+						//throw new Error("Server Error: "+this.Text);
+					}
+					Templates1.oSelect.value =  oJSONCurrentPage.sTemplateFileName;
+					oInput4.value = oJSONCurrentPage.sFolder;
+					oInput5.value = oJSONCurrentPage.sFilename;
+					oInputHidden.value = oJSONCurrentPage.sFolder+oJSONCurrentPage.sFilename;
+					//alert("returned Template: "+oJSONCurrentPage.sTemplateFileName+", FileNameId: "+oInputHidden.value);
+					showSuccessDisableLayer(disableLayer);
+					//(var removedChild = selfBody[0].removeChild(disableLayer);
+				}catch(e){
+					throw new Error("mainPages.html->on Saving. Error: "+this.Text);
+				}
+			};
+			var left= getHTMLElementLeft(currentRow);
+			var top = getHTMLElementTop(currentRow);
+			var width = getHTMLElementWidth(currentRow);
+			var height = getHTMLElementHeight(currentRow);
+			var zIndex="999";
+			var disableLayer = getDisableLayer(top,left,width,height,zIndex);
+			/*
+			var disableLayer = createHTMLElement("div",null,null,null,"....saving modifications","position:absolute;top:"+top+"px;left:"+left+"px;width:"+width+"px;height:"+height+"px;z-index:999;background:white",null);
+			var selfBody = document.getElementsByTagName("body");
+			if (selfBody.length>0) selfBody[0].appendChild(disableLayer);*/
+			//alert("FileNameId="+FileNameId+"&FileName="+sFilename+"&TemplateFileName="+sTemplateFileName+"&basedHTMLDTD="+DTD);
+			RQSTMainPages.requestSendForm("FileNameId="+FileNameId+"&FileName="+sFilename+"&URLTemplate="+URLTemplate+"&FolderName="+sFolderName+"&UserName="+UserName+"&Password="+Password,"mainPages.php");
+		};
+		currentCell.appendChild(oA);
+		var oARemove = createHTMLElement("a","REMOVE",null,null,null,"border:1px solid black;margin:0 3px 0 3px",null);
+		oARemove.onclick = function()
+		{
+			var fileNameId = oInputHidden.value;
+			var rqstRemove=new AJAXTransport();
+			rqstRemove.reply.onReply=function()
+			{
+				try
+				{
+					try
+					{
+						var textReply = eval("(" +this.Text + ")");
+					}catch(e){
+						showErrorDisableLayer(disableLayer,this.Text);
+						return;
+					}
+					oHTMLTable.deleteRow(currentRow.rowIndex);
+					//var removedChild = selfBody[0].removeChild(disableLayer);
+					showSuccessDisableLayer(disableLayer);
+				}catch(e){
+					throw new Error("mainPages.html->on removing. Error: "+this.Text);
+				}
+			};
+			var left= getHTMLElementLeft(currentRow);
+			var top = getHTMLElementTop(currentRow);
+			var width = getHTMLElementWidth(currentRow);
+			var height = getHTMLElementHeight(currentRow);
+			var zIndex="999";
+			var disableLayer = getDisableLayer(top,left,width,height,zIndex);
+			rqstRemove.requestSendForm("FileNameId="+fileNameId,"removePage.php");
+		};
+		currentCell.appendChild(oARemove);
+	}
+	//alert(rowFormRelateXML);
+}
+function removeRow()
+{
+	var oHTMLTable=document.getElementById("gridDataFiles");
+	if (oHTMLTable)
+	{
+		var lastRow = oHTMLTable.tBodies[0].lastChild;
+		var deletedRow = oHTMLTable.tBodies[0].removeChild(lastRow);
+	}
+}
+function disableBasedURL(IndexRow,oSelf)
+{
+	var radioOptions = document.formMainPages["DefaultSelection"+IndexRow.toString()];
+	var opt0 = radioOptions.item(0);
+	var opt1 = radioOptions.item(1);
+	var opt2 = radioOptions.item(2);
+	
+	var currentOptionChecked = oSelf.checked;
+	alert(selectedOptionChecked+" <-> "+currentOptionValue);
+	//alert(document.formMainPages["DefaultSelection"+IndexRow.toString()]);
+	var oHTMLTable=document.getElementById("gridDataFiles");
+	currentRow = oHTMLTable.tBodies[0].rows.item(Number(IndexRow));
+	var BasedURL = currentRow.firstChild.firstChild;
+	alert(oSelf.checked);
+	if (oSelf.checked)
+	{
+		BasedURL.setAttribute("disabled","true");
+	}else{
+		BasedURL.removeAttribute("disabled");
+	}
+	
+}
+</script>
+<style type="text/css">
+#gridDataFiles{
+margin-top:5px;
+border:3px solid #707070;
+}
+#gridDataFiles thead th{
+border:3px solid white;
+}
+#gridDataFiles thead .borderBottom{
+border-bottom:3px solid #707070;
+border-top:0px;
+}
+#gridDataFiles td{
+border:3px solid white;
+}
+</style>
+<title>Maintanance of Pages</title>
+<link rel="stylesheet" href="wbcms.css" type="text/css" />
+</head>
+<body>
+<form ACTION= "http://www.wunderbit.com/wbcms/mainPages.php" METHOD="post" name = "formMainPages" id="formMainPages">
+<table id="gridDataFiles" cellSpacing="0"  border="0">
+<thead>
+<tr>
+<!-- th bgcolor="#EEEEEE" rowSpan="2"><input type="checkbox" value="selectAll" ></th--><th bgcolor="#CCCCCC" rowSpan="2" style="width:200px">Template</th><th bgcolor="#EEEEEE" style="width:200px">Folder</th><th bgcolor="#CCCCCC" rowSpan="2" style="width:100px">Save Name</th><th bgcolor="#EEEEEE" rowSpan="2" style="width:75px">User Name</th><th bgcolor="#EEEEEE" rowSpan="2" style="width:75px">Password</th><th rowSpan="2" colSpan ="2" bgcolor="#EEEEEE" style="width:150px"></th>
+</tr>
+<tr>
+<th bgcolor="#EEEEEE">Ex.:<span style="font-size:70%">(ex.: [folderName] or [folderName1/folderName2])</span></th>
+</tr>
+<tr><td colSpan="6" class="borderBottom"></td></tr>
+</thead>
+<tbody>
+</tbody>
+<tfoot>
+</tfoot>
+</table>
+</form>
+<div style="clear:both;display:block;width:100%;margin:0;padding:0;text-align:left"><button onclick="addNewRowPage();">...add</button></div>
+</body>
+</html>
