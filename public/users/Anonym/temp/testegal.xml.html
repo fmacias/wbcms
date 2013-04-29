@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body>
+<ul class="comment">&lt;!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. --&gt;</ul>
+<ul class="comment">&lt;!-- General purpose build script for web applications and web services, including enhanced support for deploying directly to a Tomcat 4 based server. This build script assumes that the source code of your web application is organized into the following subdirectories underneath the source code directory from which you execute the build script: docs Static documentation files to be copied to the "docs" subdirectory of your distribution. src Java source code (and associated resource files) to be compiled to the "WEB-INF/classes" subdirectory of your web applicaiton. web Static HTML, JSP, and other content (such as image files), including the WEB-INF subdirectory and its configuration file contents. $Id: build.xml.txt 743401 2009-02-11 17:01:58Z markt $ --&gt;</ul>
+<ul class="comment">&lt;!-- A "project" describes a set of targets that may be requested when Ant is executed. The "default" attribute defines the target which is executed if no specific target is requested, and the "basedir" attribute defines the current working directory from which Ant executes the requested task. This is normally set to the current working directory. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">project</span> <span class="attName">name</span>="<span class="attValue">My Project</span>"
+ <span class="attName">default</span>="<span class="attValue">compile</span>"
+ <span class="attName">basedir</span>="<span class="attValue">.</span>"
+&gt;<ul class="comment">&lt;!-- ===================== Property Definitions =========================== --&gt;</ul>
+<ul class="comment">&lt;!-- Each of the following properties are used in the build script. Values for these properties are set by the first place they are defined, from the following list: * Definitions on the "ant" command line (ant -Dfoo=bar compile). * Definitions from a "build.properties" file in the top level source directory of this application. * Definitions from a "build.properties" file in the developer's home directory. * Default definitions in this build.xml file. You will note below that property values can be composed based on the contents of previously defined properties. This is a powerful technique that helps you minimize the number of changes required when your development environment is modified. Note that property composition is allowed within "build.properties" files as well as in the "build.xml" script. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">file</span>="<span class="attValue">build.properties</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">file</span>="<span class="attValue">${user.home}/build.properties</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== File and Directory Names ======================== --&gt;</ul>
+<ul class="comment">&lt;!-- These properties generally define file and directory names (or paths) that affect where the build process stores its outputs. app.name Base name of this application, used to construct filenames and directories. Defaults to "myapp". app.path Context path to which this application should be deployed (defaults to "/" plus the value of the "app.name" property). app.version Version number of this iteration of the application. build.home The directory into which the "prepare" and "compile" targets will generate their output. Defaults to "build". catalina.home The directory in which you have installed a binary distribution of Tomcat 4. This will be used by the "deploy" target. dist.home The name of the base directory in which distribution files are created. Defaults to "dist". manager.password The login password of a user that is assigned the "manager" role (so that he or she can execute commands via the "/manager" web application) manager.url The URL of the "/manager" web application on the Tomcat installation to which we will deploy web applications and web services. manager.username The login username of a user that is assigned the "manager" role (so that he or she can execute commands via the "/manager" web application) --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">app.name</span>"
+ <span class="attName">value</span>="<span class="attValue">myapp</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">app.path</span>"
+ <span class="attName">value</span>="<span class="attValue">/${app.name}</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">app.version</span>"
+ <span class="attName">value</span>="<span class="attValue">0.1-dev</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">build.home</span>"
+ <span class="attName">value</span>="<span class="attValue">${basedir}/build</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">catalina.home</span>"
+ <span class="attName">value</span>="<span class="attValue">../../../..</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="comment">&lt;!-- UPDATE THIS! --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">dist.home</span>"
+ <span class="attName">value</span>="<span class="attValue">${basedir}/dist</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">docs.home</span>"
+ <span class="attName">value</span>="<span class="attValue">${basedir}/docs</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">manager.url</span>"
+ <span class="attName">value</span>="<span class="attValue">http://localhost:8080/manager</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">src.home</span>"
+ <span class="attName">value</span>="<span class="attValue">${basedir}/src</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">web.home</span>"
+ <span class="attName">value</span>="<span class="attValue">${basedir}/web</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ================== Custom Ant Task Definitions ======================= --&gt;</ul>
+<ul class="comment">&lt;!-- These properties define custom tasks for the Ant build tool that interact with the "/manager" web application installed with Tomcat 4. Before they can be successfully utilized, you must perform the following steps: - Copy the file "server/lib/catalina-ant.jar" from your Tomcat 4 installation into the "lib" directory of your Ant installation. - Create a "build.properties" file in your application's top-level source directory (or your user login home directory) that defines appropriate values for the "manager.password", "manager.url", and "manager.username" properties described above. For more information about the Manager web application, and the functionality of these tasks, see &lt;http://localhost:8080/tomcat-docs/manager-howto.html&gt;. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">taskdef</span> <span class="attName">name</span>="<span class="attValue">install</span>"
+ <span class="attName">classname</span>="<span class="attValue">org.apache.catalina.ant.InstallTask</span>"
+&gt;&lt;<span class="nodeName">taskdef</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">taskdef</span> <span class="attName">name</span>="<span class="attValue">list</span>"
+ <span class="attName">classname</span>="<span class="attValue">org.apache.catalina.ant.ListTask</span>"
+&gt;&lt;<span class="nodeName">taskdef</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">taskdef</span> <span class="attName">name</span>="<span class="attValue">reload</span>"
+ <span class="attName">classname</span>="<span class="attValue">org.apache.catalina.ant.ReloadTask</span>"
+&gt;&lt;<span class="nodeName">taskdef</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">taskdef</span> <span class="attName">name</span>="<span class="attValue">remove</span>"
+ <span class="attName">classname</span>="<span class="attValue">org.apache.catalina.ant.RemoveTask</span>"
+&gt;&lt;<span class="nodeName">taskdef</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Compilation Control Options ==================== --&gt;</ul>
+<ul class="comment">&lt;!-- These properties control option settings on the Javac compiler when it is invoked using the &lt;javac&gt; task. compile.debug Should compilation include the debug option? compile.deprecation Should compilation include the deprecation option? compile.optimize Should compilation include the optimize option? --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">compile.debug</span>"
+ <span class="attName">value</span>="<span class="attValue">true</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">compile.deprecation</span>"
+ <span class="attName">value</span>="<span class="attValue">false</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">property</span> <span class="attName">name</span>="<span class="attValue">compile.optimize</span>"
+ <span class="attName">value</span>="<span class="attValue">true</span>"
+&gt;&lt;<span class="nodeName">property</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== External Dependencies =========================== --&gt;</ul>
+<ul class="comment">&lt;!-- Use property values to define the locations of external JAR files on which your application will depend. In general, these values will be used for two purposes: * Inclusion on the classpath that is passed to the Javac compiler * Being copied into the "/WEB-INF/lib" directory during execution of the "deploy" target. Because we will automatically include all of the Java classes that Tomcat 4 exposes to web applications, we will not need to explicitly list any of those dependencies. You only need to worry about external dependencies for JAR files that you are going to include inside your "/WEB-INF/lib" directory. --&gt;</ul>
+<ul class="comment">&lt;!-- Dummy external dependency --&gt;</ul>
+<ul class="comment">&lt;!-- &lt;property name="foo.jar" value="/path/to/foo.jar"/&gt; --&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Compilation Classpath =========================== --&gt;</ul>
+<ul class="comment">&lt;!-- Rather than relying on the CLASSPATH environment variable, Ant includes features that makes it easy to dynamically construct the classpath you need for each compilation. The example below constructs the compile classpath to include the servlet.jar file, as well as the other components that Tomcat makes available to web applications automatically, plus anything that you explicitly added. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">path</span> <span class="attName">id</span>="<span class="attValue">compile.classpath</span>"
+&gt;<ul class="comment">&lt;!-- Include all JAR files that will be included in /WEB-INF/lib --&gt;</ul>
+<ul class="comment">&lt;!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** --&gt;</ul>
+<ul class="comment">&lt;!-- &lt;pathelement location="${foo.jar}"/&gt; --&gt;</ul>
+<ul class="comment">&lt;!-- Include all elements that Tomcat exposes to applications --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">pathelement</span> <span class="attName">location</span>="<span class="attValue">${catalina.home}/common/classes</span>"
+&gt;&lt;<span class="nodeName">pathelement</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fileset</span> <span class="attName">dir</span>="<span class="attValue">${catalina.home}/common/endorsed</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">include</span> <span class="attName">name</span>="<span class="attValue">*.jar</span>"
+&gt;&lt;<span class="nodeName">include</span>/&gt;</ul>&lt;<span class="nodeName">fileset</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fileset</span> <span class="attName">dir</span>="<span class="attValue">${catalina.home}/common/lib</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">include</span> <span class="attName">name</span>="<span class="attValue">*.jar</span>"
+&gt;&lt;<span class="nodeName">include</span>/&gt;</ul>&lt;<span class="nodeName">fileset</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">pathelement</span> <span class="attName">location</span>="<span class="attValue">${catalina.home}/shared/classes</span>"
+&gt;&lt;<span class="nodeName">pathelement</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fileset</span> <span class="attName">dir</span>="<span class="attValue">${catalina.home}/shared/lib</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">include</span> <span class="attName">name</span>="<span class="attValue">*.jar</span>"
+&gt;&lt;<span class="nodeName">include</span>/&gt;</ul>&lt;<span class="nodeName">fileset</span>/&gt;</ul>&lt;<span class="nodeName">path</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== All Target ====================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "all" target is a shortcut for running the "clean" target followed by the "compile" target, to force a complete recompile. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">all</span>"
+ <span class="attName">depends</span>="<span class="attValue">clean,compile</span>"
+ <span class="attName">description</span>="<span class="attValue">Clean build and dist directories, then compile</span>"
+&gt;&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Clean Target ==================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "clean" target deletes any previous "build" and "dist" directory, so that you can be ensured the application can be built from scratch. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">clean</span>"
+ <span class="attName">description</span>="<span class="attValue">Delete old build and dist directories</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">delete</span> <span class="attName">dir</span>="<span class="attValue">${build.home}</span>"
+&gt;&lt;<span class="nodeName">delete</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">delete</span> <span class="attName">dir</span>="<span class="attValue">${dist.home}</span>"
+&gt;&lt;<span class="nodeName">delete</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Compile Target ================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "compile" target transforms source files (from your "src" directory) into object files in the appropriate location in the build directory. This example assumes that you will be including your classes in an unpacked directory hierarchy under "/WEB-INF/classes". --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">compile</span>"
+ <span class="attName">depends</span>="<span class="attValue">prepare</span>"
+ <span class="attName">description</span>="<span class="attValue">Compile Java sources</span>"
+&gt;<ul class="comment">&lt;!-- Compile Java classes as necessary --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${build.home}/WEB-INF/classes</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">javac</span> <span class="attName">srcdir</span>="<span class="attValue">${src.home}</span>"
+ <span class="attName">destdir</span>="<span class="attValue">${build.home}/WEB-INF/classes</span>"
+ <span class="attName">debug</span>="<span class="attValue">${compile.debug}</span>"
+ <span class="attName">deprecation</span>="<span class="attValue">${compile.deprecation}</span>"
+ <span class="attName">optimize</span>="<span class="attValue">${compile.optimize}</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">classpath</span> <span class="attName">refid</span>="<span class="attValue">compile.classpath</span>"
+&gt;&lt;<span class="nodeName">classpath</span>/&gt;</ul>&lt;<span class="nodeName">javac</span>/&gt;</ul>
+<ul class="comment">&lt;!-- Copy application resources --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">copy</span> <span class="attName">todir</span>="<span class="attValue">${build.home}/WEB-INF/classes</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fileset</span> <span class="attName">dir</span>="<span class="attValue">${src.home}</span>"
+ <span class="attName">excludes</span>="<span class="attValue">**/*.java</span>"
+&gt;&lt;<span class="nodeName">fileset</span>/&gt;</ul>&lt;<span class="nodeName">copy</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Dist Target ===================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "dist" target creates a binary distribution of your application in a directory structure ready to be archived in a tar.gz or zip file. Note that this target depends on two others: * "compile" so that the entire web application (including external dependencies) will have been assembled * "javadoc" so that the application Javadocs will have been created --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">dist</span>"
+ <span class="attName">depends</span>="<span class="attValue">compile,javadoc</span>"
+ <span class="attName">description</span>="<span class="attValue">Create binary distribution</span>"
+&gt;<ul class="comment">&lt;!-- Copy documentation subdirectories --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${dist.home}/docs</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">copy</span> <span class="attName">todir</span>="<span class="attValue">${dist.home}/docs</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fileset</span> <span class="attName">dir</span>="<span class="attValue">${docs.home}</span>"
+&gt;&lt;<span class="nodeName">fileset</span>/&gt;</ul>&lt;<span class="nodeName">copy</span>/&gt;</ul>
+<ul class="comment">&lt;!-- Create application JAR file --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">jar</span> <span class="attName">jarfile</span>="<span class="attValue">${dist.home}/${app.name}-${app.version}.war</span>"
+ <span class="attName">basedir</span>="<span class="attValue">${build.home}</span>"
+&gt;&lt;<span class="nodeName">jar</span>/&gt;</ul>
+<ul class="comment">&lt;!-- Copy additional files to ${dist.home} as necessary --&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Install Target ================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "install" target tells the specified Tomcat 4 installation to dynamically install this web application and make it available for execution. It does *not* cause the existence of this web application to be remembered across Tomcat restarts; if you restart the server, you will need to re-install all this web application. If you have already installed this application, and simply want Tomcat to recognize that you have updated Java classes (or the web.xml file), use the "reload" target instead. NOTE: This target will only succeed if it is run from the same server that Tomcat is running on. NOTE: This is the logical opposite of the "remove" target. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">install</span>"
+ <span class="attName">depends</span>="<span class="attValue">compile</span>"
+ <span class="attName">description</span>="<span class="attValue">Install application to servlet container</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">install</span> <span class="attName">url</span>="<span class="attValue">${manager.url}</span>"
+ <span class="attName">username</span>="<span class="attValue">${manager.username}</span>"
+ <span class="attName">password</span>="<span class="attValue">${manager.password}</span>"
+ <span class="attName">path</span>="<span class="attValue">${app.path}</span>"
+ <span class="attName">war</span>="<span class="attValue">file://${build.home}</span>"
+&gt;&lt;<span class="nodeName">install</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Javadoc Target ================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "javadoc" target creates Javadoc API documentation for the Java classes included in your application. Normally, this is only required when preparing a distribution release, but is available as a separate target in case the developer wants to create Javadocs independently. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">javadoc</span>"
+ <span class="attName">depends</span>="<span class="attValue">compile</span>"
+ <span class="attName">description</span>="<span class="attValue">Create Javadoc API documentation</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${dist.home}/docs/api</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">javadoc</span> <span class="attName">sourcepath</span>="<span class="attValue">${src.home}</span>"
+ <span class="attName">destdir</span>="<span class="attValue">${dist.home}/docs/api</span>"
+ <span class="attName">packagenames</span>="<span class="attValue">*</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">classpath</span> <span class="attName">refid</span>="<span class="attValue">compile.classpath</span>"
+&gt;&lt;<span class="nodeName">classpath</span>/&gt;</ul>&lt;<span class="nodeName">javadoc</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ====================== List Target =================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "list" target asks the specified Tomcat 4 installation to list the currently running web applications, either loaded at startup time or installed dynamically. It is useful to determine whether or not the application you are currently developing has been installed. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">list</span>"
+ <span class="attName">description</span>="<span class="attValue">List installed applications on servlet container</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">list</span> <span class="attName">url</span>="<span class="attValue">${manager.url}</span>"
+ <span class="attName">username</span>="<span class="attValue">${manager.username}</span>"
+ <span class="attName">password</span>="<span class="attValue">${manager.password}</span>"
+&gt;&lt;<span class="nodeName">list</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Prepare Target ================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "prepare" target is used to create the "build" destination directory, and copy the static contents of your web application to it. If you need to copy static files from external dependencies, you can customize the contents of this task. Normally, this task is executed indirectly when needed. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">prepare</span>"
+&gt;<ul class="comment">&lt;!-- Create build directories as needed --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${build.home}</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${build.home}/WEB-INF</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${build.home}/WEB-INF/classes</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="comment">&lt;!-- Copy static content of this web application --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">copy</span> <span class="attName">todir</span>="<span class="attValue">${build.home}</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fileset</span> <span class="attName">dir</span>="<span class="attValue">${web.home}</span>"
+&gt;&lt;<span class="nodeName">fileset</span>/&gt;</ul>&lt;<span class="nodeName">copy</span>/&gt;</ul>
+<ul class="comment">&lt;!-- Copy external dependencies as required --&gt;</ul>
+<ul class="comment">&lt;!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">mkdir</span> <span class="attName">dir</span>="<span class="attValue">${build.home}/WEB-INF/lib</span>"
+&gt;&lt;<span class="nodeName">mkdir</span>/&gt;</ul>
+<ul class="comment">&lt;!-- &lt;copy todir="${build.home}/WEB-INF/lib" file="${foo.jar}"/&gt; --&gt;</ul>
+<ul class="comment">&lt;!-- Copy static files from external dependencies as needed --&gt;</ul>
+<ul class="comment">&lt;!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** --&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Reload Target =================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "reload" signals the specified application Tomcat 4 to shut itself down and reload. This can be useful when the web application context is not reloadable and you have updated classes or property files in the /WEB-INF/classes directory or when you have added or updated jar files in the /WEB-INF/lib directory. NOTE: The /WEB-INF/web.xml web application configuration file is not reread on a reload. If you have made changes to your web.xml file you must stop then start the web application. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">reload</span>"
+ <span class="attName">depends</span>="<span class="attValue">compile</span>"
+ <span class="attName">description</span>="<span class="attValue">Reload application on servlet container</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">reload</span> <span class="attName">url</span>="<span class="attValue">${manager.url}</span>"
+ <span class="attName">username</span>="<span class="attValue">${manager.username}</span>"
+ <span class="attName">password</span>="<span class="attValue">${manager.password}</span>"
+ <span class="attName">path</span>="<span class="attValue">${app.path}</span>"
+&gt;&lt;<span class="nodeName">reload</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>
+<ul class="comment">&lt;!-- ==================== Remove Target =================================== --&gt;</ul>
+<ul class="comment">&lt;!-- The "remove" target tells the specified Tomcat 4 installation to dynamically remove this web application from service. NOTE: This is the logical opposite of the "install" target. --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">target</span> <span class="attName">name</span>="<span class="attValue">remove</span>"
+ <span class="attName">description</span>="<span class="attValue">Remove application on servlet container</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">remove</span> <span class="attName">url</span>="<span class="attValue">${manager.url}</span>"
+ <span class="attName">username</span>="<span class="attValue">${manager.username}</span>"
+ <span class="attName">password</span>="<span class="attValue">${manager.password}</span>"
+ <span class="attName">path</span>="<span class="attValue">${app.path}</span>"
+&gt;&lt;<span class="nodeName">remove</span>/&gt;</ul>&lt;<span class="nodeName">target</span>/&gt;</ul>&lt;<span class="nodeName">project</span>/&gt;</ul>
+</body>
+</html>

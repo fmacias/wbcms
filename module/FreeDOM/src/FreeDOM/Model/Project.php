@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Free-D.O.M
  *
@@ -11,6 +12,7 @@
  * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
  * @license    http://www.wunderbit.com/license     New BSD License
  */
+
 namespace FreeDOM\Model;
 
 use FreeDOM\Model\FilesGroup;
@@ -75,7 +77,7 @@ class Project
                 {
 
                     throw new \Exception(
-                        'mkdir fails. Templates Folder Could not be created. 
+                    'mkdir fails. Templates Folder Could not be created. 
                         Folder: ' . PROJEKTS_PATH . $ProjecktFolder . '/Templates\n'
                     );
                     //return false;
@@ -83,9 +85,9 @@ class Project
             } else
             {
                 throw new \Exception(
-                    'mkdir fails. ProjectFolder Folder Could not be 
+                'mkdir fails. ProjectFolder Folder Could not be 
                     created. Folder: ' .
-                    PROJEKTS_PATH . $ProjecktFolder . '\n');
+                PROJEKTS_PATH . $ProjecktFolder . '\n');
             }
         } catch (\Exception $e) {
 
@@ -168,7 +170,7 @@ class Project
             $appendedChild = $root->appendChild($Pages);
             $appendedChild = $root->appendChild($XMLFiles);
             $appendedChild = $newDOM->appendChild($root);
-            
+
             if ($newDOM->save(PROJEKTS_PATH . $this->sXMLFileName))
             {
                 unset($newDOM);
@@ -291,6 +293,7 @@ class Project
             return false;
         }
     }
+
     /**
      * 
      * @param type $DOMNodeTemplates
@@ -345,6 +348,7 @@ class Project
             throw new \Exception('projeckt->SetoTemplates: ' . $e->getMessage() . "\n");
         }
     }
+
     /**
      * 
      * @param type $DOMNodePages
@@ -543,6 +547,7 @@ class Project
             throw new \Exception('projeckt->SetoPages: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @param type $DOMNodeXMLFiles
@@ -598,6 +603,7 @@ class Project
             throw new \Exception('projeckt->SetoXMLFiles: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @throws Exception
@@ -612,6 +618,7 @@ class Project
             throw new \Exception('projeckt->getArrTemplatesFileNames: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @throws Exception
@@ -626,6 +633,7 @@ class Project
             throw new \Exception('projeckt->getArrPagesFileNames: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @throws Exception
@@ -640,6 +648,7 @@ class Project
             throw new \Exception('projeckt->getJSONTemplates: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @throws Exception
@@ -654,6 +663,7 @@ class Project
             throw new \Exception('projeckt->getJSONPages: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @throws Exception
@@ -668,6 +678,7 @@ class Project
             throw new \Exception('projeckt->getJSONXMLFiles: ' . $e->getMessage() . '\n');
         }
     }
+
     /**
      * 
      * @return type
@@ -715,6 +726,7 @@ class Project
             );
         }
     }
+
     /**
      * 
      * @throws Exception
@@ -734,6 +746,7 @@ class Project
             throw new \Exception("projeckt->setPropertiesToNull: " . $e->getMessage() . "\n");
         }
     }
+
     /**
      * 
      * @param type $sFileNameIn_Id
@@ -784,6 +797,7 @@ class Project
             throw new \Exception("projeckt->removePage: " . $e->getMessage() . "\n");
         }
     }
+
     /**
      * 
      * @param type $sFileNameIn_Id

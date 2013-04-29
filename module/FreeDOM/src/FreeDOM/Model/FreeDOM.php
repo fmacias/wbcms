@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Free-D.O.M
  *
@@ -11,51 +12,60 @@
  * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
  * @license    http://www.wunderbit.com/license     New BSD License
  */
+
 namespace FreeDOM\Model;
 
 class FreeDOM extends Project
 {
+
     /**
      * Current FileName
      * @var string
      */
     public $currentFile = '';
+
     /**
      * Current URL+FileName
      * @var string
      */
     public $currentURLFile = '';
+
     /**
      * Current File System+FileName
      * @var string
      */
     public $currentFSFile = '';
+
     /**
      *
      * @var type 
      */
     public $currentFileExtension = '';
+
     /**
      *
      * @var type 
      */
     public $ContentType = '';
+
     /**
      *
      * @var type 
      */
     public $MimeType = '';
+
     /**
      *
      * @var type 
      */
     public $charSet = '';
+
     /**
      *
      * @var type 
      */
     public $curOFileObj = NULL;
-    
+
     /**
      * @todo controller operation
      */
@@ -118,16 +128,16 @@ class FreeDOM extends Project
             throw new \Exception('CurrentFile->setCurrent: ' . $e->getMessage() . '\n');
         }
     }
+
     public function getAbsoluteFileName()
     {
         $absolutFileName = sprintf(
-                '%s%s%s',
-                FILESYSTEM_PATH,
-                $this->curOFileObj->sPath,
+                '%s%s%s', FILESYSTEM_PATH, $this->curOFileObj->sPath,
                 $this->curOFileObj->sFilename
         );
         return $absolutFileName;
     }
+
     /**
      * 
      * @return type
@@ -209,7 +219,7 @@ class FreeDOM extends Project
             throw new \Exception('CurrentFile->saveCurrentFile: ' . $e->getMessage() . '\n');
         }
     }
-    
+
     /**
      * 
      * @param type $XMLCode_in
@@ -307,7 +317,7 @@ class FreeDOM extends Project
 //
             $bytes = 0;
             $newDOM = new \DOMDocument("1.0", $this->curOFileObj->charSet);
-            $selfDOM->load(FILESYSTEM_PATH.$this->currentFSFile);
+            $selfDOM->load(FILESYSTEM_PATH . $this->currentFSFile);
             $newDOM->loadXML($DOMString);
             $curDocElement = $newDOM->documentElement;
             $newElement = $selfDOM->importNode($curDocElement, true);
@@ -488,8 +498,10 @@ class FreeDOM extends Project
         }
         return $Bytes;
     }
+
     public function redirect($url)
     {
-        header('Location: '.$url);
+        header('Location: ' . $url);
     }
+
 }

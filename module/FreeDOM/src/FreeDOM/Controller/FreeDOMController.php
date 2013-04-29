@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Free-D.O.M
  *
@@ -11,6 +12,7 @@
  * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
  * @license    http://www.wunderbit.com/license     New BSD License
  */
+
 namespace FreeDOM\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -24,25 +26,24 @@ class FreeDOMController extends AbstractActionController
 
     public function loadProjectAction()
     {
-	try
-	{
-	        $this->prepare();
-		$selectedProject = $_POST["selectedProject"];
-		$currentNewProject = new FreeDOM();
-		if ($currentNewProject->loadProject($selectedProject))
-		{
-			$_SESSION["CurrentFile"] = $currentNewProject;
-			echo (json_encode($_SESSION["CurrentFile"]));
-		}else
-		{
-			throw new \Exception("loadProject returns false. Projeckt could not be created!");
-		}
-	}catch(\Exception $e)
-	{
-		echo('loadProject fails: '.  $e->getMessage().'\n');
-	}
-	return true;
+        try {
+            $this->prepare();
+            $selectedProject = $_POST["selectedProject"];
+            $currentNewProject = new FreeDOM();
+            if ($currentNewProject->loadProject($selectedProject))
+            {
+                $_SESSION["CurrentFile"] = $currentNewProject;
+                echo (json_encode($_SESSION["CurrentFile"]));
+            } else
+            {
+                throw new \Exception("loadProject returns false. Projeckt could not be created!");
+            }
+        } catch (\Exception $e) {
+            echo('loadProject fails: ' . $e->getMessage() . '\n');
+        }
+        return true;
     }
+
     public function getProjectsAction()
     {
         $this->prepare();
@@ -136,7 +137,7 @@ class FreeDOMController extends AbstractActionController
             header('Content-type: text/xml; charset=utf-8');
             $currentFile = $_SESSION["CurrentFile"]->getAbsoluteFileName();
             echo file_get_contents(
-                   $currentFile
+                    $currentFile
             );
         } catch (Exception $e) {
             echo('getFile fails: ' . $e->getMessage() . '\n');
@@ -287,30 +288,29 @@ class FreeDOMController extends AbstractActionController
 
     public function removeXmlFileAction()
     {
-        try
-	{
-		$this->prepare();
-		$FileNameId = $_POST["FileNameId"];
+        try {
+            $this->prepare();
+            $FileNameId = $_POST["FileNameId"];
 
-		$curFile = $_SESSION["CurrentFile"]->curOFileObj;
-	        $curCompleteFileName = $curFile->sFolder.$curFile->sFilename;
-        	//
-	        $curPage = $_SESSION["CurrentFile"]->oXMLFiles->aFiles[$FileNameId];
-        	$completeFileName = $curPage->sFolder.$curPage->sFilename;;
-	        //
-        	if ($completeFileName==$curCompleteFileName)
-	        {
-        	        throw new \Exception ("\n\tThe file you are triying to modify is being edited right now!");
-	        }
+            $curFile = $_SESSION["CurrentFile"]->curOFileObj;
+            $curCompleteFileName = $curFile->sFolder . $curFile->sFilename;
+            //
+            $curPage = $_SESSION["CurrentFile"]->oXMLFiles->aFiles[$FileNameId];
+            $completeFileName = $curPage->sFolder . $curPage->sFilename;
+            ;
+            //
+            if ($completeFileName == $curCompleteFileName)
+            {
+                throw new \Exception("\n\tThe file you are triying to modify is being edited right now!");
+            }
 
-		$_SESSION["CurrentFile"]->removeXMLData($FileNameId);
-		$_SESSION["CurrentFile"]->saveProjectIntoXML();
-		echo ('{removed:"yes"}');
-	}catch(\Exception $e)
-	{
-        	echo ("removeXMLFile fails: ".  $e->getMessage()."\n");
-	}
-	return true;
+            $_SESSION["CurrentFile"]->removeXMLData($FileNameId);
+            $_SESSION["CurrentFile"]->saveProjectIntoXML();
+            echo ('{removed:"yes"}');
+        } catch (\Exception $e) {
+            echo ("removeXMLFile fails: " . $e->getMessage() . "\n");
+        }
+        return true;
     }
 
     public function mainXmlFilesAction()
@@ -318,57 +318,59 @@ class FreeDOMController extends AbstractActionController
         $this->prepare();
         return $this->mainXmlFiles();
     }
+
     public function saveXMLFileAction()
     {
-	try
-	{
-                $this->prepare();
-		$currentSession = $_SESSION["CurrentFile"];
-		$FileContent= utf8_encode(file_get_contents( "php://input"));
-		$FileContent= file_get_contents( "php://input");
-		$bytes = $_SESSION["CurrentFile"]->saveXML2($FileContent);
-		$_SESSION["CurrentFile"]->curOFileObj->setParserContentType();
-		$_SESSION["CurrentFile"]->saveProjectIntoXML();
-		$fileJSON =$_SESSION["CurrentFile"]->curOFileObj->getFileJSON();
-		echo $fileJSON;
-	}catch(\Exception $e)
-	{
-		echo('saveXMLFileAction fails: '.  $e->getMessage(). '\n');
-	}
-	return true;
+        try {
+            $this->prepare();
+            $currentSession = $_SESSION["CurrentFile"];
+            $FileContent = utf8_encode(file_get_contents("php://input"));
+            $FileContent = file_get_contents("php://input");
+            $bytes = $_SESSION["CurrentFile"]->saveXML2($FileContent);
+            $_SESSION["CurrentFile"]->curOFileObj->setParserContentType();
+            $_SESSION["CurrentFile"]->saveProjectIntoXML();
+            $fileJSON = $_SESSION["CurrentFile"]->curOFileObj->getFileJSON();
+            echo $fileJSON;
+        } catch (\Exception $e) {
+            echo('saveXMLFileAction fails: ' . $e->getMessage() . '\n');
+        }
+        return true;
     }
+
     public function requestSourceCodeAction()
     {
-	try
-	{
-                $this->prepare();
-        	$currentSession = $_SESSION["CurrentFile"];
-	        $mime = $currentSession->curOFileObj->sContentType;
-        	$charset = $currentSession->curOFileObj->charSet;
-        	$pattern = '/\w*$/';
- 	        $matchesCount = preg_match($pattern,$_SESSION["CurrentFile"]->curOFileObj->sContentType, $matches);
-        	$fileType = strtoupper($matches[0]);
-	        $curFileEncoding = $currentSession->curOFileObj->charSet;
-        	//
-	        header("Cache-Control: no-cache"); // HTTP/1.1
-	        header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Datum in der Vergangenheit
-        	header('Content-type: '.$mime.';charset='.$charset);
-		echo file_get_contents($currentSession->currentURLFile);
-	}catch(\Exception $e)
-	{
-        	echo('requestSourceCodeAction fails: '.  $e->getMessage(). '\n');
-	}
-	return true;
+        try {
+            $this->prepare();
+            $currentSession = $_SESSION["CurrentFile"];
+            $mime = $currentSession->curOFileObj->sContentType;
+            $charset = $currentSession->curOFileObj->charSet;
+            $pattern = '/\w*$/';
+            $matchesCount = preg_match($pattern,
+                    $_SESSION["CurrentFile"]->curOFileObj->sContentType,
+                    $matches);
+            $fileType = strtoupper($matches[0]);
+            $curFileEncoding = $currentSession->curOFileObj->charSet;
+            //
+            header("Cache-Control: no-cache"); // HTTP/1.1
+            header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Datum in der Vergangenheit
+            header('Content-type: ' . $mime . ';charset=' . $charset);
+            echo file_get_contents($currentSession->currentURLFile);
+        } catch (\Exception $e) {
+            echo('requestSourceCodeAction fails: ' . $e->getMessage() . '\n');
+        }
+        return true;
     }
+
     public function saveSourceCodeAction()
     {
-         $this->prepare();
-	 return $this->saveSourceCode();
+        $this->prepare();
+        return $this->saveSourceCode();
     }
+
     public function saveHTMLDOMAction()
     {
         $this->prepare();
-	return $this->saveHTMLDOM();
+        return $this->saveHTMLDOM();
     }
 
     private function mainTemplates()
@@ -707,124 +709,134 @@ class FreeDOMController extends AbstractActionController
         }
         return true;
     }
+
     private function saveSourceCode()
     {
-            try
-        {
+        try {
 
-                $currentSession = $_SESSION["CurrentFile"];
-                $FileContent= file_get_contents( "php://input");
+            $currentSession = $_SESSION["CurrentFile"];
+            $FileContent = file_get_contents("php://input");
 
-                $pattern = '/\w*$/';
-                $matchesCount = preg_match($pattern,$_SESSION["CurrentFile"]->curOFileObj->sContentType, $matches);
-                $fileType = strtoupper($matches[0]);
-                $curFileEncoding = $currentSession->curOFileObj->charSet;
-                //
-                if ($fileType=="XML")
-                {
-                        preg_match( '@<\?xml.+encoding\s*="([^\s"]+)@si', $FileContent, $encoding );
+            $pattern = '/\w*$/';
+            $matchesCount = preg_match($pattern,
+                    $_SESSION["CurrentFile"]->curOFileObj->sContentType,
+                    $matches);
+            $fileType = strtoupper($matches[0]);
+            $curFileEncoding = $currentSession->curOFileObj->charSet;
+            //
+            if ($fileType == "XML")
+            {
+                preg_match('@<\?xml.+encoding\s*="([^\s"]+)@si', $FileContent,
+                        $encoding);
                 //	
-                        if (isset($encoding))
-                        {
-                                $charSet = $encoding[1];
-                        }
-                        if (!(isset($charSet)))
-                        {
-                                $charSet = "UTF-8";
-                        }
-                        if ($charSet=="UTF-8")
-                        {
-                                //$FileContent= utf8_encode($FileContent);
-                        }else{
-                                $FileContent= utf8_decode($FileContent);
-                        }
-                //$FileContent= utf8_encode($FileContent);
-                        $bytes = $_SESSION["CurrentFile"]->saveXMLFromString($FileContent,$charSet);
-                }else if ($fileType == "HTML")
+                if (isset($encoding))
                 {
-                        preg_match( '@<meta.+http-equiv\s*=\s*"(Content-Type)".*>?@i',$FileContent, $httpEquiv );
-                        if (isset($httpEquiv))
-                        {
-                                preg_match( '@content\s*=\s*"([\w/]+)(;\s+charset=([^\s"]+))?@i',$httpEquiv[0], $contentType );
-                        }
-                        if (isset($contentType))
-                        {
-                                $charSet = $contentType[3];
-                        }
-                        if (!(isset($charSet)))
-                        {
-                                $charSet = "UTF-8";
-                        }
-                        if ($charSet == "UTF-8")
-                        {
-                        }else
-                        {
-                                //$FileContent= utf8_decode($FileContent);
-                        }
-                        if ($charSet != "UTF-8")
-                        {
-                                //$FileContent= utf8_decode(file_get_contents( "php://input"));
-                        }
-                        $Bytes = $_SESSION["CurrentFile"]->curOFileObj->file_put_contents($FileContent);
-                }else{
-                         throw new \Exception  ('saveSourceCode.php->file not recongnized. file type: '.$this->curOFileObj->sContentType.'\n');
+                    $charSet = $encoding[1];
                 }
-                //$Bytes = $_SESSION["CurrentFile"]->curOFileObj->file_put_contents($FileContent);
-                $_SESSION["CurrentFile"]->curOFileObj->setParserContentType();
-                $_SESSION["CurrentFile"]->saveProjectIntoXML();
-                $fileJSON =$_SESSION["CurrentFile"]->curOFileObj->getFileJSON();
-                echo $fileJSON;
-        }catch(\Exception $e)
-        {
-                echo('saveSourceCode fails: '.  $e->getMessage(). '\n');
+                if (!(isset($charSet)))
+                {
+                    $charSet = "UTF-8";
+                }
+                if ($charSet == "UTF-8")
+                {
+                    //$FileContent= utf8_encode($FileContent);
+                } else
+                {
+                    $FileContent = utf8_decode($FileContent);
+                }
+                //$FileContent= utf8_encode($FileContent);
+                $bytes = $_SESSION["CurrentFile"]->saveXMLFromString($FileContent,
+                        $charSet);
+            } else if ($fileType == "HTML")
+            {
+                preg_match('@<meta.+http-equiv\s*=\s*"(Content-Type)".*>?@i',
+                        $FileContent, $httpEquiv);
+                if (isset($httpEquiv))
+                {
+                    preg_match('@content\s*=\s*"([\w/]+)(;\s+charset=([^\s"]+))?@i',
+                            $httpEquiv[0], $contentType);
+                }
+                if (isset($contentType))
+                {
+                    $charSet = $contentType[3];
+                }
+                if (!(isset($charSet)))
+                {
+                    $charSet = "UTF-8";
+                }
+                if ($charSet == "UTF-8")
+                {
+                    
+                } else
+                {
+                    //$FileContent= utf8_decode($FileContent);
+                }
+                if ($charSet != "UTF-8")
+                {
+                    //$FileContent= utf8_decode(file_get_contents( "php://input"));
+                }
+                $Bytes = $_SESSION["CurrentFile"]->curOFileObj->file_put_contents($FileContent);
+            } else
+            {
+                throw new \Exception('saveSourceCode.php->file not recongnized. file type: ' . $this->curOFileObj->sContentType . '\n');
+            }
+            //$Bytes = $_SESSION["CurrentFile"]->curOFileObj->file_put_contents($FileContent);
+            $_SESSION["CurrentFile"]->curOFileObj->setParserContentType();
+            $_SESSION["CurrentFile"]->saveProjectIntoXML();
+            $fileJSON = $_SESSION["CurrentFile"]->curOFileObj->getFileJSON();
+            echo $fileJSON;
+        } catch (\Exception $e) {
+            echo('saveSourceCode fails: ' . $e->getMessage() . '\n');
         }
         return true;
     }
+
     private function saveHTMLDOM()
     {
-        try
-        {
-                $currentSession = $_SESSION["CurrentFile"];
-                //
-                $FileContent= file_get_contents( "php://input");
-                if ($currentSession->curOFileObj->charSet != "UTF-8")
-                {
-
-                }else
-                {
-
-                }
-                $FileContent = preg_replace("/&amp;/","&",$FileContent);
-                $FileContent = preg_replace("/&lt;/","<",$FileContent);
-                $FileContent = preg_replace("/&gt;/",">",$FileContent);
-                //
-                $pattern = '/\w*$/';
-                $matchesCount = preg_match($pattern,$_SESSION["CurrentFile"]->curOFileObj->sContentType, $matches);
-                $fileType = strtoupper($matches[0]);
-                //
-                //if ($fileType=="XML")
-                //{
-                //	$Bytes = $_SESSION["CurrentFile"]->saveXML2($FileContent);
-                //}else
-                //{
-                        $Bytes = $_SESSION["CurrentFile"]->saveHTML2($FileContent);
-                //}
-                if ($Bytes>0)
-                {
-                        $_SESSION["CurrentFile"]->curOFileObj->setParserContentType();
-                        $_SESSION["CurrentFile"]->saveProjectIntoXML();
-                        $fileJSON =$_SESSION["CurrentFile"]->curOFileObj->getFileJSON();
-                        echo $fileJSON;
-                }else
-                {
-                         throw new \Exception  ("document could not be stored!");
-                }
-        }catch(\Exception $e)
-        {
-                echo('saveDOM fails: '.  $e->getMessage(). '\n');
+        try {
+            $currentSession = $_SESSION["CurrentFile"];
+            //
+            $FileContent = file_get_contents("php://input");
+            if ($currentSession->curOFileObj->charSet != "UTF-8")
+            {
+                
+            } else
+            {
+                
+            }
+            $FileContent = preg_replace("/&amp;/", "&", $FileContent);
+            $FileContent = preg_replace("/&lt;/", "<", $FileContent);
+            $FileContent = preg_replace("/&gt;/", ">", $FileContent);
+            //
+            $pattern = '/\w*$/';
+            $matchesCount = preg_match($pattern,
+                    $_SESSION["CurrentFile"]->curOFileObj->sContentType,
+                    $matches);
+            $fileType = strtoupper($matches[0]);
+            //
+            //if ($fileType=="XML")
+            //{
+            //	$Bytes = $_SESSION["CurrentFile"]->saveXML2($FileContent);
+            //}else
+            //{
+            $Bytes = $_SESSION["CurrentFile"]->saveHTML2($FileContent);
+            //}
+            if ($Bytes > 0)
+            {
+                $_SESSION["CurrentFile"]->curOFileObj->setParserContentType();
+                $_SESSION["CurrentFile"]->saveProjectIntoXML();
+                $fileJSON = $_SESSION["CurrentFile"]->curOFileObj->getFileJSON();
+                echo $fileJSON;
+            } else
+            {
+                throw new \Exception("document could not be stored!");
+            }
+        } catch (\Exception $e) {
+            echo('saveDOM fails: ' . $e->getMessage() . '\n');
         }
         return true;
     }
+
     private function prepare()
     {
         # empty layout
@@ -842,6 +854,7 @@ class FreeDOMController extends AbstractActionController
         # @todo one user several working directories
         $this->setUserWorkFolders($user);
     }
+
     private function createFolder($fileFolder)
     {
         try {
@@ -935,4 +948,5 @@ class FreeDOMController extends AbstractActionController
         # folder with the projekt files
         define("PROJEKTS_FOLDER", "projects/");
     }
+
 }

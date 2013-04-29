@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Free-D.O.M
  *
@@ -11,6 +12,7 @@
  * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
  * @license    http://www.wunderbit.com/license     New BSD License
  */
+
 namespace FreeDOM\Model\File;
 
 class File
@@ -174,12 +176,13 @@ class File
         try {
 
             //clearstatcache();
-            if (file_exists(FILESYSTEM_PATH.$this->sPath . $this->sFilename))
+            if (file_exists(FILESYSTEM_PATH . $this->sPath . $this->sFilename))
             {
                 
             } else
             {
-                $ourFileHandle = fopen(FILESYSTEM_PATH.$this->sPath . $this->sFilename, 'w');
+                $ourFileHandle = fopen(FILESYSTEM_PATH . $this->sPath . $this->sFilename,
+                        'w');
                 if ($ourFileHandle == false)
                 {
                     throw new \Exception(
@@ -411,14 +414,14 @@ class File
     public function file_put_contents($data)
     {
         try {
-            $currentFile = FILESYSTEM_PATH.$this->sPath . $this->sFilename;
+            $currentFile = FILESYSTEM_PATH . $this->sPath . $this->sFilename;
             if (
                     ($h = fopen($currentFile, 'w')) === false
             )
             {
                 throw new \Exception(
-                    "\n\tFile->file_put_contents: fopen fails for file" .
-                    $this->sPath . $this->sFilename . "\n"
+                "\n\tFile->file_put_contents: fopen fails for file" .
+                $this->sPath . $this->sFilename . "\n"
                 );
             }
 
@@ -447,7 +450,7 @@ class File
     {
         try {
 
-            if (file_exists(FILESYSTEM_PATH.$this->sPath . $this->sFilename))
+            if (file_exists(FILESYSTEM_PATH . $this->sPath . $this->sFilename))
                 unlink($this->sPath . $this->sFilename);
         } catch (\Exception $e) {
             throw new \Exception(
@@ -471,7 +474,7 @@ class File
     public function setParserContentType()
     {
         try {
-            $completeFileName = FILESYSTEM_PATH.$this->sPath . $this->sFilename;
+            $completeFileName = FILESYSTEM_PATH . $this->sPath . $this->sFilename;
             $fileExtension = $this->fileExtension;
             $newDOM = new \DOMDocument();
             switch ($this->sContentType) {

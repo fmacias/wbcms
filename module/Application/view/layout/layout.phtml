@@ -4,39 +4,55 @@
         <meta charset="utf-8">
         <?php echo $this->headTitle($this->translate('Free-D.O.M Web XML-HTML Editor'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
-        <?php echo $this->headMeta()->appendName('Cache-Control', 'no-cache, no-store, must-revalidate') ?>
-        <?php echo $this->headMeta()->appendName('Pragma', 'no-cache') ?>
-        <?php echo $this->headMeta()->appendName('Expires', '0') ?>
-        <?php echo $this->headMeta()->appendName('content-type', 'text/html; charset=UTF-8') ?>
+        <?php
+        echo $this->headMeta()->appendName('viewport',
+                'width=device-width, initial-scale=1.0')
+        ?>
+        <?php
+        echo $this->headMeta()->appendName('Cache-Control',
+                'no-cache, no-store, must-revalidate')
+        ?>
+        <?php
+        echo $this->headMeta()->appendName('Pragma', 'no-cache')
+        ?>
+        <?php
+        echo $this->headMeta()->appendName('Expires', '0')
+        ?>
+        <?php
+        echo $this->headMeta()->appendName('content-type',
+                'text/html; charset=UTF-8')
+        ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(
-                    array(
-                            'rel' => 'shortcut icon', 
-                            'type' => 'image/vnd.microsoft.icon', 
+        <?php
+        echo $this->headLink(
+                        array(
+                            'rel' => 'shortcut icon',
+                            'type' => 'image/vnd.microsoft.icon',
                             'href' => $this->basePath() . '/img/favicon.ico'
-                     )
+                        )
                 )
-                ->prependStylesheet($this->basePath() . '/css/menu.css') ?>
+                ->prependStylesheet($this->basePath() . '/css/menu.css')
+        ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()->prependFile(
-                    $this->basePath() . '/js/html5.js', 
-                    'text/javascript', 
-                    array('conditional' => 'lt IE 9',)
+        <?php
+        echo $this->headScript()->prependFile(
+                        $this->basePath() . '/js/html5.js', 'text/javascript',
+                        array('conditional' => 'lt IE 9',)
                 )
                 ->prependFile($this->basePath() . '/js/display0_0.js')
                 ->prependFile($this->basePath() . '/js/layoutActions.js')
-                ->prependFile($this->basePath() . '/js/divEfects.js') 
-                ->prependFile($this->basePath() . '/js/currentFileObj.js') 
-                ->prependFile($this->basePath() . '/js/treeli.js') 
-                ->prependFile($this->basePath() . '/js/menuActions.js') 
-                ->prependFile($this->basePath() . '/js/menuInitialitation.js') 
-                ->prependFile($this->basePath() . '/js/menuClass.js') 
-                ->prependFile($this->basePath() . '/js/DOMFunctions.js') 
-                ->prependFile($this->basePath() . '/js/wcms.js') 
-                ->prependFile($this->basePath() . '/js/WAjax2.js')?>
+                ->prependFile($this->basePath() . '/js/divEfects.js')
+                ->prependFile($this->basePath() . '/js/currentFileObj.js')
+                ->prependFile($this->basePath() . '/js/treeli.js')
+                ->prependFile($this->basePath() . '/js/menuActions.js')
+                ->prependFile($this->basePath() . '/js/menuInitialitation.js')
+                ->prependFile($this->basePath() . '/js/menuClass.js')
+                ->prependFile($this->basePath() . '/js/DOMFunctions.js')
+                ->prependFile($this->basePath() . '/js/wcms.js')
+                ->prependFile($this->basePath() . '/js/WAjax2.js')
+        ?>
         <script language="JavaScript" type = "text/javascript">
             <!--
             var isCtrl = false;
@@ -129,11 +145,11 @@
 
     </head>
     <body>
-         <div class="container">
-            <?php echo $this->content; ?>
+        <div class="container">
+        <?php echo $this->content; ?>
             <hr>
         </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+<?php echo $this->inlineScript() ?>
     </body>
 </html>
 

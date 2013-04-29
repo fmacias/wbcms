@@ -63,43 +63,153 @@
 </script>
 </head>
 <body><ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">database</span>&gt;<ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">tables</span>&gt;<ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">table</span> <span class="attName">tableType</span>="<span class="attValue">system</span>"
-&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;users&lt;<span class="nodeName">name</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:stylesheet</span> <span class="attName">
+                                xmlns:xsl</span>="<span class="attValue">http://www.w3.org/1999/XSL/Transform</span>"
+                     <span class="attName">version</span>="<span class="attValue">1.0</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:output</span> <span class="attName">method</span>="<span class="attValue">html</span>"
+     <span class="attName">doctype-public</span>="<span class="attValue">-//W3C//DTD HTML 4.01 Transitional//EN</span>"
+     <span class="attName">doctype-system</span>="<span class="attValue">http://www.w3.org/TR/html4/loose.dtd</span>"
+    &gt;&lt;<span class="nodeName">xsl:output</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fields</span>&gt;<ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;uid&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;long&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">/</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">html</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">head</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">meta</span> <span class="attName">http-equiv</span>="<span class="attValue">Content-Type</span>"
+     <span class="attName">content</span>="<span class="attValue">text/html; charset=iso-8859-1</span>"
+    &gt;&lt;<span class="nodeName">meta</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Untitled Document&lt;<span class="nodeName">title</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;uname&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;java.lang.String&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">style</span> <span class="attName">type</span>="<span class="attValue">text/css</span>"
+    &gt;li{ list-style-position: outside; list-style-type: none; display: list-item; } span{ font-weight:bold; } .nodeName{ color:#CC0099; } .attValue{ color:#0000FF; } a:hover{ cursor:pointer; cursor:hand; } .processingIntruction{ color:#0066CC; } .comment{ color:#686868; }&lt;<span class="nodeName">style</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;firstName&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;java.lang.String&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">script</span> <span class="attName">type</span>="<span class="attValue">text/javascript</span>"
+    &gt;function expandElement(oSelf) { var currentElement = oSelf.parentNode; var texto = oSelf.innerHTML; if (texto=="+") { showChilds(currentElement); oSelf.innerHTML="-"; }else{ hideChilds(currentElement); oSelf.innerHTML="+"; } } function showChilds(element) { for (var x=0;x&lt;element.childNodes.length;x++) { var currentElement = element.childNodes[x]; //alert(currentElement.nodeName); if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block"; } } function hideChilds(element) { for (var x=0;x&lt;element.childNodes.length;x++) { var currentElement = element.childNodes[x]; if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none"; } }&lt;<span class="nodeName">script</span>/&gt;</ul>&lt;<span class="nodeName">head</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;lastName&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;java.lang.String&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">body</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:apply-templates</span>&gt;&lt;<span class="nodeName">xsl:apply-templates</span>/&gt;</ul>&lt;<span class="nodeName">body</span>/&gt;</ul>&lt;<span class="nodeName">html</span>/&gt;</ul>&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;email&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;java.lang.String&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>&lt;<span class="nodeName">fields</span>/&gt;</ul>&lt;<span class="nodeName">table</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">node()</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:variable</span> <span class="attName">name</span>="<span class="attValue">content</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">translate(text(),' 
+	', '')</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">xsl:variable</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">table</span> <span class="attName">tableType</span>="<span class="attValue">application</span>"
-&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;documents&lt;<span class="nodeName">name</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">ul</span> <span class="attName">class</span>="<span class="attValue">wbcmsXMLNode</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:if</span> <span class="attName">test</span>="<span class="attValue">$content=''</span>"
+    &gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">a</span> <span class="attName">style</span>="<span class="attValue">font-weight:bold;font-size:110%</span>"
+     <span class="attName">onclick</span>="<span class="attValue">expandElement(this)</span>"
+    &gt;-&lt;<span class="nodeName">a</span>/&gt;</ul>&lt;<span class="nodeName">xsl:if</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&lt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">fields</span>&gt;<ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;docid&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;long&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">span</span> <span class="attName">class</span>="<span class="attValue">nodeName</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">name()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">span</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;name&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;java.lang.String&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:variable</span> <span class="attName">name</span>="<span class="attValue">parentChildNodes</span>"
+     <span class="attName">select</span>="<span class="attValue">../namespace::node()</span>"
+    &gt;&lt;<span class="nodeName">xsl:variable</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;creationDate&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;java.util.Date&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:for-each</span> <span class="attName">select</span>="<span class="attValue">namespace::node()</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:variable</span> <span class="attName">name</span>="<span class="attValue">currentURI</span>"
+     <span class="attName">select</span>="<span class="attValue">.</span>"
+    &gt;&lt;<span class="nodeName">xsl:variable</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;authorID&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;long&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:variable</span> <span class="attName">name</span>="<span class="attValue">currentQName</span>"
+     <span class="attName">select</span>="<span class="attValue">name()</span>"
+    &gt;&lt;<span class="nodeName">xsl:variable</span>/&gt;</ul>
 <ul class="wbcmsXMLNode">
-<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">field</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;version&lt;<span class="nodeName">name</span>/&gt;</ul>
-<ul class="wbcmsXMLNode">&lt;<span class="nodeName">type</span>&gt;int&lt;<span class="nodeName">type</span>/&gt;</ul>&lt;<span class="nodeName">field</span>/&gt;</ul>&lt;<span class="nodeName">fields</span>/&gt;</ul>&lt;<span class="nodeName">table</span>/&gt;</ul>&lt;<span class="nodeName">tables</span>/&gt;</ul>&lt;<span class="nodeName">database</span>/&gt;</ul></body>
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:if</span> <span class="attName">test</span>="<span class="attValue">$currentURI != "http://www.w3.org/XML/1998/namespace"</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:variable</span> <span class="attName">name</span>="<span class="attValue">parentNameSpace</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:for-each</span> <span class="attName">select</span>="<span class="attValue">$parentChildNodes</span>"
+    &gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:if</span> <span class="attName">test</span>="<span class="attValue">name() = $currentQName</span>"
+    &gt;exist&lt;<span class="nodeName">xsl:if</span>/&gt;</ul>&lt;<span class="nodeName">xsl:for-each</span>/&gt;</ul>&lt;<span class="nodeName">xsl:variable</span>/&gt;</ul>
+<ul class="comment">&lt;!-- xsl:value-of select="$parentNameSpace" / --&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:if</span> <span class="attName">test</span>="<span class="attValue">$parentNameSpace!='exist'</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">span</span> <span class="attName">class</span>="<span class="attValue">attName</span>"
+    &gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:if</span> <span class="attName">test</span>="<span class="attValue">name() = ""</span>"
+    &gt;xmlsn&lt;<span class="nodeName">xsl:if</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:if</span> <span class="attName">test</span>="<span class="attValue">name() != ""</span>"
+    &gt;xmlns:<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">$currentQName</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">xsl:if</span>/&gt;</ul>&lt;<span class="nodeName">span</span>/&gt;</ul>="<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">span</span> <span class="attName">class</span>="<span class="attValue">attValue</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">.</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">span</span>/&gt;</ul>"&lt;<span class="nodeName">xsl:if</span>/&gt;</ul>&lt;<span class="nodeName">xsl:if</span>/&gt;</ul>&lt;<span class="nodeName">xsl:for-each</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:apply-templates</span> <span class="attName">select</span>="<span class="attValue">@*</span>"
+    &gt;&lt;<span class="nodeName">xsl:apply-templates</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&gt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:apply-templates</span>&gt;&lt;<span class="nodeName">xsl:apply-templates</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&lt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">span</span> <span class="attName">class</span>="<span class="attValue">nodeName</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">name()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">span</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;/&gt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>&lt;<span class="nodeName">ul</span>/&gt;</ul>&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">@*</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">span</span> <span class="attName">class</span>="<span class="attValue">attName</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">name()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">span</span>/&gt;</ul>="<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">span</span> <span class="attName">class</span>="<span class="attValue">attValue</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">.</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">span</span>/&gt;</ul>"&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">text()</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">normalize-space()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">comment()</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">ul</span> <span class="attName">class</span>="<span class="attValue">comment</span>"
+    &gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&lt;!--&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">normalize-space()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;--&gt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>&lt;<span class="nodeName">ul</span>/&gt;</ul>&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">processing-instruction()</span>"
+    &gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">ul</span> <span class="attName">class</span>="<span class="attValue">processingIntruction</span>"
+    &gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&lt;?&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">name()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">normalize-space()</span>"
+    &gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:text</span> <span class="attName">disable-output-escaping</span>="<span class="attValue">no</span>"
+    &gt;&gt;&lt;<span class="nodeName">xsl:text</span>/&gt;</ul>&lt;<span class="nodeName">ul</span>/&gt;</ul>&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>
+<ul class="comment">&lt;!-- xsl:variable name="targetNamespace" select="xsd:schema/@targetNamespace"/&gt; &lt;xsl:for-each select="../../node()"&gt;&lt;xsl:value-of select="name()"/&gt;&lt;/xsl:for-each&gt; &lt;xsl:variable name="targetPrefix"&gt; &lt;xsl:for-each select="xsd:schema"&gt; &lt;xsl:for-each select="namespace::node()"&gt; &lt;xsl:if test=". = $targetNamespace"&gt; &lt;xsl:value-of select="name()"/&gt; &lt;/xsl:if&gt; &lt;/xsl:for-each&gt; &lt;/xsl:for-each&gt; &lt;/xsl:variable --&gt;</ul>&lt;<span class="nodeName">xsl:stylesheet</span>/&gt;</ul></body>
 </html>

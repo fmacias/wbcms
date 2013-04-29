@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Free-D.O.M
  *
@@ -11,6 +12,7 @@
  * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
  * @license    http://www.wunderbit.com/license     New BSD License
  */
+
 namespace FreeDOM\Model\FilesGroup;
 
 abstract class FilesGroup

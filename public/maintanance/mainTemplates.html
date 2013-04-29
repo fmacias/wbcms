@@ -1,459 +1,459 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="../js/DOMFunctions.js"></script>
-<script type="text/javascript" src="../js/WAjax2.js"></script>
-<script type="text/javascript" src="../js/divEfects.js"></script>
-<script type="text/javascript" src="../js/wcms.js"></script>
-<script language="JavaScript"> 
-var aTemplates = new Array();
-var oSelectedRows = {
-		table:new Object(),
-		Rows: new Array(),
-		setRow:function(oRow)
-		{
-			this.Rows.push(oRow);	
-		},
-		unsetRow:function(oRow)
-		{
-			for (var x=0;x<this.Rows.length;x++)
-			{
-				if (this.Rows[x]!=null)
-				{
-					if (this.Rows[x].rowIndex==oRow.rowIndex)
-					{
-						this.Rows[x] = null;
-						break;
-					}
-				}
-			}	
-		},
-		setTable:function(HTMLTableElement){
-			this.table = HTMLTableElement;	
-		},
-		removeSelectedRows:function ()
-		{
-			var rqsts = new Array();
-			var rowsToRemove = new Array();
-			for (var x=0;x<this.Rows.length;x++)
-			{
-				if (this.Rows[x]!=null)
-				{
-					var currentRowIndex = this.Rows[x].rowIndex;
-					var oSelf = this; 
-					var oSelfRow = this.Rows[x];
-					/*this.Rows[x].removeFromTable = function()
-					{
-						oSelf.table.deleteRow(this.rowIndex);
-						//oSelfRow = null;
-					};*/
-					if (!(oSelfRow.childNodes[5]))
-					{
-						return;
-					}
-					var oCell5 =  oSelfRow.childNodes[5];
-					if (!(oCell5.childNodes[1])){
-						return;
-					}
-					var FileNameId = oCell5.childNodes[1];
-					
-					if (FileNameId.value !="")
-					{
-						rqsts[x]=new AJAXTransport();
-						rqsts[x].reply.onReply=function()
-						{
-							var textReply = eval("(" +this.Text + ")");
-							if (textReply.Error)
-							{
-								alert(textReply.Error);
-							}else
-							{
-								oSelf.table.deleteRow(oSelfRow.rowIndex);
-								//oSelfRow.removeFromTable();
-								//oSelfRow = null;
-							}
-						};
-						rqsts[x].requestSendForm("FileNameId="+FileNameId.value,"../freedom/removetemplate");
-					}
-				}
-			}			
-		}		
-}
-document.DOMLoaded=function()
-{
-	requestTemplates();
-	//oSelectedRows.setTable(document.getElementById("gridDataFiles"));
-}
-function requestTemplates()
-{
-	var RQSTTemplates = new AJAXTransport();
-	RQSTTemplates.reply.onReply=function()
-	{
-            var oJSONTemplates =eval("(" +this.Text + ")");
-	    oTemplates = oJSONTemplates;
-	    foreachAddTemplateRow(oTemplates);
-	};
-	//RQSTTemplates.request('http://www.wunderbit.com/wbcms/requestTemplates.php');
-        RQSTTemplates.request('../freedom/requesttemplates');
-}
-function foreachAddTemplateRow(oTemplates)
-{
-	for (var x in oTemplates)
-	{
-		addNewRowTemplate(oTemplates[x]);
-	}
-}
-var RQSTsSave = new Array();
-var rqstIndex = 0;
-disableLayerCount = new Array();
-function addNewRowTemplate(oTemplate)
-{
-//	rowCounter++;
-	var oHTMLTable=document.getElementById("gridDataFiles");
-	if (oHTMLTable)
-	{
-		//rowCounter = oHTMLTable.tBodies[0].getElementsByTagName("TR").length;
-		rowCounter = oHTMLTable.rows.length;
-		rowIndex = (rowCounter<=0)?0:rowCounter--;
-		if (!(oTemplate))
-		{
-			var BaseURL= "";
-			var TemplateFileName = "defaultName"+rowIndex.toString()+".html";
-			var fileNameId = "";
-		}else{
-			var BaseURL= oTemplate.BaseURL;
-			var TemplateFileName = oTemplate.sFilename;
-			var fileNameId = TemplateFileName;
-		}
-		var cellIndex = 0; 
-		//var currentRow = oHTMLTable.tBodies[0].insertRow(rowIndex);
-		var currentRow = oHTMLTable.insertRow(rowIndex);
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <script type="text/javascript" src="../js/DOMFunctions.js"></script>
+        <script type="text/javascript" src="../js/WAjax2.js"></script>
+        <script type="text/javascript" src="../js/divEfects.js"></script>
+        <script type="text/javascript" src="../js/wcms.js"></script>
+        <script language="JavaScript">
+            var aTemplates = new Array();
+            var oSelectedRows = {
+                table: new Object(),
+                Rows: new Array(),
+                setRow: function(oRow)
+                {
+                    this.Rows.push(oRow);
+                },
+                unsetRow: function(oRow)
+                {
+                    for (var x = 0; x < this.Rows.length; x++)
+                    {
+                        if (this.Rows[x] != null)
+                        {
+                            if (this.Rows[x].rowIndex == oRow.rowIndex)
+                            {
+                                this.Rows[x] = null;
+                                break;
+                            }
+                        }
+                    }
+                },
+                setTable: function(HTMLTableElement) {
+                    this.table = HTMLTableElement;
+                },
+                removeSelectedRows: function()
+                {
+                    var rqsts = new Array();
+                    var rowsToRemove = new Array();
+                    for (var x = 0; x < this.Rows.length; x++)
+                    {
+                        if (this.Rows[x] != null)
+                        {
+                            var currentRowIndex = this.Rows[x].rowIndex;
+                            var oSelf = this;
+                            var oSelfRow = this.Rows[x];
+                            /*this.Rows[x].removeFromTable = function()
+                             {
+                             oSelf.table.deleteRow(this.rowIndex);
+                             //oSelfRow = null;
+                             };*/
+                            if (!(oSelfRow.childNodes[5]))
+                            {
+                                return;
+                            }
+                            var oCell5 = oSelfRow.childNodes[5];
+                            if (!(oCell5.childNodes[1])) {
+                                return;
+                            }
+                            var FileNameId = oCell5.childNodes[1];
 
-		/*var currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#EEEEEE");
-		currentCell.setAttribute("align","center");
-		var oInput1 = createHTMLElement("input",null,null,null,null,null,'TYPE=checkBox,NAME=RowId_'+rowIndex.toString()+",value=RowId_"+rowIndex.toString());
-		oInput1.onclick = function()
-		{
-			if (this.checked ==true)
-			{
-				oSelectedRows.setRow(currentRow);
-			}else{
-				oSelectedRows.unsetRow(currentRow);
-			}
-		}
-		//oInput1.setAttribute('onchange','alert(this.checked)');
-		currentCell.appendChild(oInput1);
-		cellIndex++;*/
+                            if (FileNameId.value != "")
+                            {
+                                rqsts[x] = new AJAXTransport();
+                                rqsts[x].reply.onReply = function()
+                                {
+                                    var textReply = eval("(" + this.Text + ")");
+                                    if (textReply.Error)
+                                    {
+                                        alert(textReply.Error);
+                                    } else
+                                    {
+                                        oSelf.table.deleteRow(oSelfRow.rowIndex);
+                                        //oSelfRow.removeFromTable();
+                                        //oSelfRow = null;
+                                    }
+                                };
+                                rqsts[x].requestSendForm("FileNameId=" + FileNameId.value, "../freedom/removetemplate");
+                            }
+                        }
+                    }
+                }
+            }
+            document.DOMLoaded = function()
+            {
+                requestTemplates();
+                //oSelectedRows.setTable(document.getElementById("gridDataFiles"));
+            }
+            function requestTemplates()
+            {
+                var RQSTTemplates = new AJAXTransport();
+                RQSTTemplates.reply.onReply = function()
+                {
+                    var oJSONTemplates = eval("(" + this.Text + ")");
+                    oTemplates = oJSONTemplates;
+                    foreachAddTemplateRow(oTemplates);
+                };
+                //RQSTTemplates.request('http://www.wunderbit.com/wbcms/requestTemplates.php');
+                RQSTTemplates.request('../freedom/requesttemplates');
+            }
+            function foreachAddTemplateRow(oTemplates)
+            {
+                for (var x in oTemplates)
+                {
+                    addNewRowTemplate(oTemplates[x]);
+                }
+            }
+            var RQSTsSave = new Array();
+            var rqstIndex = 0;
+            disableLayerCount = new Array();
+            function addNewRowTemplate(oTemplate)
+            {
+                //	rowCounter++;
+                var oHTMLTable = document.getElementById("gridDataFiles");
+                if (oHTMLTable)
+                {
+                    //rowCounter = oHTMLTable.tBodies[0].getElementsByTagName("TR").length;
+                    rowCounter = oHTMLTable.rows.length;
+                    rowIndex = (rowCounter <= 0) ? 0 : rowCounter--;
+                    if (!(oTemplate))
+                    {
+                        var BaseURL = "";
+                        var TemplateFileName = "defaultName" + rowIndex.toString() + ".html";
+                        var fileNameId = "";
+                    } else {
+                        var BaseURL = oTemplate.BaseURL;
+                        var TemplateFileName = oTemplate.sFilename;
+                        var fileNameId = TemplateFileName;
+                    }
+                    var cellIndex = 0;
+                    //var currentRow = oHTMLTable.tBodies[0].insertRow(rowIndex);
+                    var currentRow = oHTMLTable.insertRow(rowIndex);
 
-		var currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#CCCCCC");
-		currentCell.setAttribute("align","center");
-		var oInput2 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=text,NAME=BaseURL'+rowIndex.toString()+",value="+BaseURL);
-		//oInput2.setAttribute('onchange','alert("validate base url")');
-		currentCell.appendChild(oInput2);
-		cellIndex++;
+                    /*var currentCell = currentRow.insertCell(cellIndex);
+                     currentCell.setAttribute("bgcolor","#EEEEEE");
+                     currentCell.setAttribute("align","center");
+                     var oInput1 = createHTMLElement("input",null,null,null,null,null,'TYPE=checkBox,NAME=RowId_'+rowIndex.toString()+",value=RowId_"+rowIndex.toString());
+                     oInput1.onclick = function()
+                     {
+                     if (this.checked ==true)
+                     {
+                     oSelectedRows.setRow(currentRow);
+                     }else{
+                     oSelectedRows.unsetRow(currentRow);
+                     }
+                     }
+                     //oInput1.setAttribute('onchange','alert(this.checked)');
+                     currentCell.appendChild(oInput1);
+                     cellIndex++;*/
+
+                    var currentCell = currentRow.insertCell(cellIndex);
+                    currentCell.setAttribute("bgcolor", "#CCCCCC");
+                    currentCell.setAttribute("align", "center");
+                    var oInput2 = createHTMLElement("input", null, null, null, null, "width:98%", 'TYPE=text,NAME=BaseURL' + rowIndex.toString() + ",value=" + BaseURL);
+                    //oInput2.setAttribute('onchange','alert("validate base url")');
+                    currentCell.appendChild(oInput2);
+                    cellIndex++;
 
 
-		currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#EEEEEE");
-		currentCell.setAttribute("align","center");
-		var oCurrSelectElement = createHTMLElement("select",null,null,null,null);
-		
-		var oOptHTMLFrameSet = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptHTMLFrameSet.value = "HTMLFrameset.html";
-		oOptHTMLFrameSet.text = "html 4.01 frameset";
-		//
-		var oOptHTMLStrict = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptHTMLStrict.value = "HTMLStrict.html";
-		oOptHTMLStrict.text = "html 4.01 strict";
-		//
-		var oOptHTMLTransitional = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptHTMLTransitional.value = "HTMLTransitional.html";
-		oOptHTMLTransitional.text = "html 4.01 transitional";
-		//
-		var oOptXHTMLFrameset = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptXHTMLFrameset.value = "XHTMLFrameset.html";
-		oOptXHTMLFrameset.text = "xhtml 1.0 frameset";
-		//
-		var oOptXHTMLStrict = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptXHTMLStrict.value = "XHTMLStrict.html";
-		oOptXHTMLStrict.text = "xhtml 1.0 strict";
-		//
-		var oOptXHTMLTransitional = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptXHTMLTransitional.value = "XHTMLTransitional.html";
-		oOptXHTMLTransitional.text = "xhtml 1.0 transitional";
-		//
-		var oOptHTML5 = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptHTML5.value = "HTML5.html";
-		oOptHTML5.text = "HTML5";
-		//
-		var oOptEmpty = createHTMLElement("option",null,null,null,null,null,null,null);
-		oOptEmpty.value = "";
-		oOptEmpty.text = "";
-		//
-		HTMLSelectAddLast(oCurrSelectElement, oOptEmpty);
-		//oCurrSelectElement.add(oOptEmpty,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptHTMLFrameSet);
-		//oCurrSelectElement.add(oOptHTMLFrameSet,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptHTMLStrict);
-		//oCurrSelectElement.add(oOptHTMLStrict,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptHTMLTransitional);
-		//oCurrSelectElement.add(oOptHTMLTransitional,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptXHTMLFrameset);
-		//oCurrSelectElement.add(oOptXHTMLFrameset,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptXHTMLStrict);
-		//oCurrSelectElement.add(oOptXHTMLStrict,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptXHTMLTransitional);
-		//oCurrSelectElement.add(oOptXHTMLTransitional,null);
-		HTMLSelectAddLast(oCurrSelectElement, oOptHTML5);
-		//oCurrSelectElement.add(oOptHTML5,null);
-		//HTMLSelectAddLast(oCurrSelectElement, oOptEmpty);
-		//currentCell.appendChild(oCurrSelectElement);
-		currentCell.appendChild(oCurrSelectElement);
-		cellIndex++;
-		
-		/*currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#EEEEEE");
-		currentCell.setAttribute("align","center");
-		var oInput3 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=strict4'+rowIndex.toString());
-		//oInput3.setAttribute('onchange','alert(this.checked)');
-		currentCell.appendChild(oInput3);
-		cellIndex++;
+                    currentCell = currentRow.insertCell(cellIndex);
+                    currentCell.setAttribute("bgcolor", "#EEEEEE");
+                    currentCell.setAttribute("align", "center");
+                    var oCurrSelectElement = createHTMLElement("select", null, null, null, null);
 
-		currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#CCCCCC");
-		currentCell.setAttribute("align","center");
-		var oInput4 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=strict1'+rowIndex.toString());
-		//oInput4.setAttribute('onchange','alert("validate chekbox")');
-		currentCell.appendChild(oInput4);
-		cellIndex++;
+                    var oOptHTMLFrameSet = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptHTMLFrameSet.value = "HTMLFrameset.html";
+                    oOptHTMLFrameSet.text = "html 4.01 frameset";
+                    //
+                    var oOptHTMLStrict = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptHTMLStrict.value = "HTMLStrict.html";
+                    oOptHTMLStrict.text = "html 4.01 strict";
+                    //
+                    var oOptHTMLTransitional = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptHTMLTransitional.value = "HTMLTransitional.html";
+                    oOptHTMLTransitional.text = "html 4.01 transitional";
+                    //
+                    var oOptXHTMLFrameset = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptXHTMLFrameset.value = "XHTMLFrameset.html";
+                    oOptXHTMLFrameset.text = "xhtml 1.0 frameset";
+                    //
+                    var oOptXHTMLStrict = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptXHTMLStrict.value = "XHTMLStrict.html";
+                    oOptXHTMLStrict.text = "xhtml 1.0 strict";
+                    //
+                    var oOptXHTMLTransitional = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptXHTMLTransitional.value = "XHTMLTransitional.html";
+                    oOptXHTMLTransitional.text = "xhtml 1.0 transitional";
+                    //
+                    var oOptHTML5 = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptHTML5.value = "HTML5.html";
+                    oOptHTML5.text = "HTML5";
+                    //
+                    var oOptEmpty = createHTMLElement("option", null, null, null, null, null, null, null);
+                    oOptEmpty.value = "";
+                    oOptEmpty.text = "";
+                    //
+                    HTMLSelectAddLast(oCurrSelectElement, oOptEmpty);
+                    //oCurrSelectElement.add(oOptEmpty,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptHTMLFrameSet);
+                    //oCurrSelectElement.add(oOptHTMLFrameSet,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptHTMLStrict);
+                    //oCurrSelectElement.add(oOptHTMLStrict,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptHTMLTransitional);
+                    //oCurrSelectElement.add(oOptHTMLTransitional,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptXHTMLFrameset);
+                    //oCurrSelectElement.add(oOptXHTMLFrameset,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptXHTMLStrict);
+                    //oCurrSelectElement.add(oOptXHTMLStrict,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptXHTMLTransitional);
+                    //oCurrSelectElement.add(oOptXHTMLTransitional,null);
+                    HTMLSelectAddLast(oCurrSelectElement, oOptHTML5);
+                    //oCurrSelectElement.add(oOptHTML5,null);
+                    //HTMLSelectAddLast(oCurrSelectElement, oOptEmpty);
+                    //currentCell.appendChild(oCurrSelectElement);
+                    currentCell.appendChild(oCurrSelectElement);
+                    cellIndex++;
 
-		currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#EEEEEE");
-		currentCell.setAttribute("align","center");
-		var oInput5 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=transitional1'+rowIndex.toString());
-		//oInput5.setAttribute('onchange','alert("validate chekbox")');
-		currentCell.appendChild(oInput5);
-		
-		cellIndex++;*/
+                    /*currentCell = currentRow.insertCell(cellIndex);
+                     currentCell.setAttribute("bgcolor","#EEEEEE");
+                     currentCell.setAttribute("align","center");
+                     var oInput3 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=strict4'+rowIndex.toString());
+                     //oInput3.setAttribute('onchange','alert(this.checked)');
+                     currentCell.appendChild(oInput3);
+                     cellIndex++;
+                     
+                     currentCell = currentRow.insertCell(cellIndex);
+                     currentCell.setAttribute("bgcolor","#CCCCCC");
+                     currentCell.setAttribute("align","center");
+                     var oInput4 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=strict1'+rowIndex.toString());
+                     //oInput4.setAttribute('onchange','alert("validate chekbox")');
+                     currentCell.appendChild(oInput4);
+                     cellIndex++;
+                     
+                     currentCell = currentRow.insertCell(cellIndex);
+                     currentCell.setAttribute("bgcolor","#EEEEEE");
+                     currentCell.setAttribute("align","center");
+                     var oInput5 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=radio,NAME=DefaultSelection'+rowIndex.toString()+',VALUE=transitional1'+rowIndex.toString());
+                     //oInput5.setAttribute('onchange','alert("validate chekbox")');
+                     currentCell.appendChild(oInput5);
+                     
+                     cellIndex++;*/
 
-		var currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#CCCCCC");
-		currentCell.setAttribute("align","center");
+                    var currentCell = currentRow.insertCell(cellIndex);
+                    currentCell.setAttribute("bgcolor", "#CCCCCC");
+                    currentCell.setAttribute("align", "center");
 
-		var oInput6 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=text,NAME=TemplateName'+rowIndex.toString()+",value="+TemplateFileName);
-		currentCell.appendChild(oInput6);
+                    var oInput6 = createHTMLElement("input", null, null, null, null, "width:98%", 'TYPE=text,NAME=TemplateName' + rowIndex.toString() + ",value=" + TemplateFileName);
+                    currentCell.appendChild(oInput6);
 
-		var oInputHidden = createHTMLElement("input",null,null,null,null,null,'TYPE=hidden,NAME=FileName_Id_'+rowIndex.toString()+",value="+fileNameId);
-		currentCell.appendChild(oInputHidden);
+                    var oInputHidden = createHTMLElement("input", null, null, null, null, null, 'TYPE=hidden,NAME=FileName_Id_' + rowIndex.toString() + ",value=" + fileNameId);
+                    currentCell.appendChild(oInputHidden);
 
-		cellIndex++;
+                    cellIndex++;
 
-		var currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#EEEEEE");
-		currentCell.setAttribute("align","center");
-		var oInput7 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=text,NAME=UserName'+rowIndex.toString()+",value=");
-		currentCell.appendChild(oInput7);
-		cellIndex++;
-		
-		var currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#CCCCCC");
-		currentCell.setAttribute("align","center");
-		var oInput8 = createHTMLElement("input",null,null,null,null,"width:98%",'TYPE=password,NAME=Password'+rowIndex.toString()+",value=");
-		currentCell.appendChild(oInput8);
-		cellIndex++;
-		
-		var currentCell = currentRow.insertCell(cellIndex);
-		currentCell.setAttribute("bgcolor","#EEEEEE");
-		currentCell.setAttribute("align","center");
-		var oA = createHTMLElement("a","SAVE",null,null,null,"border:1px solid black;margin:0 3px 0 3px",null);
-		oA.onclick = function()
-		{
-				try
-				{
-					var fileNameId = oInputHidden.value;
-					var templateFileName = oInput6.value;
-					/*var DTD = (oInput5.checked)?"transitional1":"";
-					DTD = (oInput4.checked)?"strict1":DTD;
-					DTD = (oInput3.checked)?"strict4":DTD;*/
-					var DTD = oCurrSelectElement.value;
-					var baseURL = oInput2.value;
-					var UserName = oInput7.value;
-					var Password = oInput8.value;
-					//RQSTsSave[rqstIndex] = new AJAXTransport();
-					this.AJAXRqst = new AJAXTransport();
-					var self =RQSTsSave[rqstIndex]; 
-					this.AJAXRqst.reply.onReply=function()
-					{
-						try
-						{
-							try
-							{
-								var oJSONCurrentTemplate =eval("(" +this.Text + ")"); //if ist is not an JSON Object returns is always returning an Error.
-							}catch(e){
-								//throw new Error("Server Error: "+this.Text);
-								showErrorDisableLayer(disableLayer,this.Text);
-								return;
-							}
-							oInputHidden.value = oJSONCurrentTemplate.sFilename;
-							oInput6.value = oJSONCurrentTemplate.sFilename;
-							oInput2.value =  oJSONCurrentTemplate.BaseURL;
-							showSuccessDisableLayer(disableLayer);
-						}catch(e){
-							throw new Error("mainTemplates.html->on Saving. Error: "+e.message);
-						}
-					};
-					var selfButton = this;
-					var left= getHTMLElementLeft(currentRow);
-					var top = getHTMLElementTop(currentRow);
-					var width = getHTMLElementWidth(currentRow);
-					var height = getHTMLElementHeight(currentRow);
-					var zIndex="999";
-					var disableLayer = getDisableLayer(top,left,width,height,zIndex);
-					this.AJAXRqst.requestSendForm(
-                                                "FileNameId="+fileNameId+"&FileName="+templateFileName+"&BaseURL="+baseURL+"&basedHTMLDTD="+DTD+
-                                                "&UserName="+UserName+"&Password="+Password,
-                                                "../freedom/mainTemplates"
-                                        );
-					rqstIndex++;
-				}catch(e)
-				{
-					throw new Error("mainTemplates.html->on saving fails. Error: "+e.message);
-				}
-		};
-		currentCell.appendChild(oA);
-		var oARemove = createHTMLElement("a","REMOVE",null,null,null,"border:1px solid black;margin:0 3px 0 3px",null);
-		oARemove.onclick = function(){
-			var fileNameId = oInputHidden.value;
-			var rqstRemove=new AJAXTransport();
-			rqstRemove.reply.onReply=function()
-			{
-				try
-				{
-					try
-					{
-						var textReply = eval("(" +this.Text + ")");
-					}catch(e){
-						showErrorDisableLayer(disableLayer,this.Text);
-						return;
-					}
-					oHTMLTable.deleteRow(currentRow.rowIndex);
-					showSuccessDisableLayer(disableLayer);
-					//var removedChild = selfBody[0].removeChild(disableLayer);
-				}catch(e){
-					throw new Error("mainTemplates.html->on Removing. Error: "+e.message);
-				}
-			};
-			var left= getHTMLElementLeft(currentRow);
-			var top = getHTMLElementTop(currentRow);
-			var width = getHTMLElementWidth(currentRow);
-			var height = getHTMLElementHeight(currentRow);
-			var zIndex="999";
-			var disableLayer = getDisableLayer(top,left,width,height,zIndex);
-			rqstRemove.requestSendForm("FileNameId="+fileNameId,"../freedom/removetemplate");
-		};
-		currentCell.appendChild(oARemove);
-	}
-}
-function removeRow()
-{
-	var oHTMLTable=document.getElementById("gridDataFiles");
-	if (oHTMLTable)
-	{
-		var lastRow = oHTMLTable.tBodies[0].lastChild;
-		var deletedRow = oHTMLTable.tBodies[0].removeChild(lastRow);
-	}
-}
-function SaveChanges(){
-	if (DataValidation()){
-		ApplyChanges();				
-	}
-}
-function DataValidation(){
-	var objAllInputs = document.getElementsByTagName("Input");
-		for (var nX=0;nX<objAllInputs.length;nX++)
-		{
-			
+                    var currentCell = currentRow.insertCell(cellIndex);
+                    currentCell.setAttribute("bgcolor", "#EEEEEE");
+                    currentCell.setAttribute("align", "center");
+                    var oInput7 = createHTMLElement("input", null, null, null, null, "width:98%", 'TYPE=text,NAME=UserName' + rowIndex.toString() + ",value=");
+                    currentCell.appendChild(oInput7);
+                    cellIndex++;
 
-		if ((objAllInputs[nX].id !== "user_name")&&(objAllInputs[nX].id !== "pass"))
-		{
-			if (objAllInputs[nX].type == "text"){
-				if (objAllInputs[nX].id=="DefaultValue")
-				{
-					if (document.getElementById("SetDefaultValue").checked==true)	
-					{
-						if (objAllInputs[nX].value)
-						{
-							if (!(CheckDecimal(objAllInputs[nX])))
-							{
-								return false;
-							}else
-							{
-								var nValue = Number(objAllInputs[nX].value);
-								objAllInputs[nX].value = Round2Dec(nValue);
-							}
-						}
-					}else{
-						objAllInputs[nX].value="";
-					}
-				}else
-				{
-					if (objAllInputs[nX].value)
-					{
-						if (!(CheckDecimal(objAllInputs[nX]))){
-							return false;
-						}else
-						{
-							var nValue = Number(objAllInputs[nX].value);
-							objAllInputs[nX].value = Round2Dec(nValue);
-						}
-					}
-				}
-			}
-		}
-		}
-	return true;
-}
-</script>
-<style type="text/css">
-#gridDataFiles{
-margin-top:5px;
-border:3px solid #707070;
-}
-#gridDataFiles thead th{
-border:3px solid white;
-}
-#gridDataFiles thead .borderBottom{
-border-bottom:3px solid #707070;
-border-top:0px;
-}
-#gridDataFiles td{
-border:3px solid white;
-}
-</style>
-<title>Maintanance of Templates</title>
-<link rel="stylesheet" href="wbcms.css" type="text/css" />
-</head>
-<body>
-<form ACTION= "../freedom/mainTemplates" METHOD="post" name = "formMainTemplates" id="formMainTemplates">
-<table id="gridDataFiles" cellSpacing="0">
-<thead>
-<tr>
-<th bgcolor="#CCCCCC" width="220px">Based on URL</th><th bgcolor="#EEEEEE">Based on DTD</th><th bgcolor="#CCCCCC">Template Name</th><th bgcolor="#EEEEEE">User Name</th><th bgcolor="#EEEEEE">Password</th><th bgcolor="#EEEEEE"> </th>
-</tr>
-<tr>
-<!-- th bgcolor="#EEEEEE">4.01 Strict</th><th bgcolor="#CCCCCC"> 1.0 Strict</th><th bgcolor="#EEEEEE">1.0 transitional</th-->
-</tr>
-<tr><td colSpan="7" class="borderBottom"></td></tr>
-</thead>
-<tbody>
-</tbody>
-<tfoot>
-</tfoot>
-</table>
-</form>
-<div style="clear:both;display:block;width:100%;margin:0;padding:0;text-align:left"><!-- button onclick="oSelectedRows.removeSelectedRows();">Remove Selection</button--><button onclick="addNewRowTemplate();">...add</button></div>
-</body>
+                    var currentCell = currentRow.insertCell(cellIndex);
+                    currentCell.setAttribute("bgcolor", "#CCCCCC");
+                    currentCell.setAttribute("align", "center");
+                    var oInput8 = createHTMLElement("input", null, null, null, null, "width:98%", 'TYPE=password,NAME=Password' + rowIndex.toString() + ",value=");
+                    currentCell.appendChild(oInput8);
+                    cellIndex++;
+
+                    var currentCell = currentRow.insertCell(cellIndex);
+                    currentCell.setAttribute("bgcolor", "#EEEEEE");
+                    currentCell.setAttribute("align", "center");
+                    var oA = createHTMLElement("a", "SAVE", null, null, null, "border:1px solid black;margin:0 3px 0 3px", null);
+                    oA.onclick = function()
+                    {
+                        try
+                        {
+                            var fileNameId = oInputHidden.value;
+                            var templateFileName = oInput6.value;
+                            /*var DTD = (oInput5.checked)?"transitional1":"";
+                             DTD = (oInput4.checked)?"strict1":DTD;
+                             DTD = (oInput3.checked)?"strict4":DTD;*/
+                            var DTD = oCurrSelectElement.value;
+                            var baseURL = oInput2.value;
+                            var UserName = oInput7.value;
+                            var Password = oInput8.value;
+                            //RQSTsSave[rqstIndex] = new AJAXTransport();
+                            this.AJAXRqst = new AJAXTransport();
+                            var self = RQSTsSave[rqstIndex];
+                            this.AJAXRqst.reply.onReply = function()
+                            {
+                                try
+                                {
+                                    try
+                                    {
+                                        var oJSONCurrentTemplate = eval("(" + this.Text + ")"); //if ist is not an JSON Object returns is always returning an Error.
+                                    } catch (e) {
+                                        //throw new Error("Server Error: "+this.Text);
+                                        showErrorDisableLayer(disableLayer, this.Text);
+                                        return;
+                                    }
+                                    oInputHidden.value = oJSONCurrentTemplate.sFilename;
+                                    oInput6.value = oJSONCurrentTemplate.sFilename;
+                                    oInput2.value = oJSONCurrentTemplate.BaseURL;
+                                    showSuccessDisableLayer(disableLayer);
+                                } catch (e) {
+                                    throw new Error("mainTemplates.html->on Saving. Error: " + e.message);
+                                }
+                            };
+                            var selfButton = this;
+                            var left = getHTMLElementLeft(currentRow);
+                            var top = getHTMLElementTop(currentRow);
+                            var width = getHTMLElementWidth(currentRow);
+                            var height = getHTMLElementHeight(currentRow);
+                            var zIndex = "999";
+                            var disableLayer = getDisableLayer(top, left, width, height, zIndex);
+                            this.AJAXRqst.requestSendForm(
+                                    "FileNameId=" + fileNameId + "&FileName=" + templateFileName + "&BaseURL=" + baseURL + "&basedHTMLDTD=" + DTD +
+                                    "&UserName=" + UserName + "&Password=" + Password,
+                                    "../freedom/mainTemplates"
+                                    );
+                            rqstIndex++;
+                        } catch (e)
+                        {
+                            throw new Error("mainTemplates.html->on saving fails. Error: " + e.message);
+                        }
+                    };
+                    currentCell.appendChild(oA);
+                    var oARemove = createHTMLElement("a", "REMOVE", null, null, null, "border:1px solid black;margin:0 3px 0 3px", null);
+                    oARemove.onclick = function() {
+                        var fileNameId = oInputHidden.value;
+                        var rqstRemove = new AJAXTransport();
+                        rqstRemove.reply.onReply = function()
+                        {
+                            try
+                            {
+                                try
+                                {
+                                    var textReply = eval("(" + this.Text + ")");
+                                } catch (e) {
+                                    showErrorDisableLayer(disableLayer, this.Text);
+                                    return;
+                                }
+                                oHTMLTable.deleteRow(currentRow.rowIndex);
+                                showSuccessDisableLayer(disableLayer);
+                                //var removedChild = selfBody[0].removeChild(disableLayer);
+                            } catch (e) {
+                                throw new Error("mainTemplates.html->on Removing. Error: " + e.message);
+                            }
+                        };
+                        var left = getHTMLElementLeft(currentRow);
+                        var top = getHTMLElementTop(currentRow);
+                        var width = getHTMLElementWidth(currentRow);
+                        var height = getHTMLElementHeight(currentRow);
+                        var zIndex = "999";
+                        var disableLayer = getDisableLayer(top, left, width, height, zIndex);
+                        rqstRemove.requestSendForm("FileNameId=" + fileNameId, "../freedom/removetemplate");
+                    };
+                    currentCell.appendChild(oARemove);
+                }
+            }
+            function removeRow()
+            {
+                var oHTMLTable = document.getElementById("gridDataFiles");
+                if (oHTMLTable)
+                {
+                    var lastRow = oHTMLTable.tBodies[0].lastChild;
+                    var deletedRow = oHTMLTable.tBodies[0].removeChild(lastRow);
+                }
+            }
+            function SaveChanges() {
+                if (DataValidation()) {
+                    ApplyChanges();
+                }
+            }
+            function DataValidation() {
+                var objAllInputs = document.getElementsByTagName("Input");
+                for (var nX = 0; nX < objAllInputs.length; nX++)
+                {
+
+
+                    if ((objAllInputs[nX].id !== "user_name") && (objAllInputs[nX].id !== "pass"))
+                    {
+                        if (objAllInputs[nX].type == "text") {
+                            if (objAllInputs[nX].id == "DefaultValue")
+                            {
+                                if (document.getElementById("SetDefaultValue").checked == true)
+                                {
+                                    if (objAllInputs[nX].value)
+                                    {
+                                        if (!(CheckDecimal(objAllInputs[nX])))
+                                        {
+                                            return false;
+                                        } else
+                                        {
+                                            var nValue = Number(objAllInputs[nX].value);
+                                            objAllInputs[nX].value = Round2Dec(nValue);
+                                        }
+                                    }
+                                } else {
+                                    objAllInputs[nX].value = "";
+                                }
+                            } else
+                            {
+                                if (objAllInputs[nX].value)
+                                {
+                                    if (!(CheckDecimal(objAllInputs[nX]))) {
+                                        return false;
+                                    } else
+                                    {
+                                        var nValue = Number(objAllInputs[nX].value);
+                                        objAllInputs[nX].value = Round2Dec(nValue);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+        </script>
+        <style type="text/css">
+            #gridDataFiles{
+                margin-top:5px;
+                border:3px solid #707070;
+            }
+            #gridDataFiles thead th{
+                border:3px solid white;
+            }
+            #gridDataFiles thead .borderBottom{
+                border-bottom:3px solid #707070;
+                border-top:0px;
+            }
+            #gridDataFiles td{
+                border:3px solid white;
+            }
+        </style>
+        <title>Maintanance of Templates</title>
+        <link rel="stylesheet" href="wbcms.css" type="text/css" />
+    </head>
+    <body>
+        <form ACTION= "../freedom/mainTemplates" METHOD="post" name = "formMainTemplates" id="formMainTemplates">
+            <table id="gridDataFiles" cellSpacing="0">
+                <thead>
+                    <tr>
+                        <th bgcolor="#CCCCCC" width="220px">Based on URL</th><th bgcolor="#EEEEEE">Based on DTD</th><th bgcolor="#CCCCCC">Template Name</th><th bgcolor="#EEEEEE">User Name</th><th bgcolor="#EEEEEE">Password</th><th bgcolor="#EEEEEE"> </th>
+                    </tr>
+                    <tr>
+                        <!-- th bgcolor="#EEEEEE">4.01 Strict</th><th bgcolor="#CCCCCC"> 1.0 Strict</th><th bgcolor="#EEEEEE">1.0 transitional</th-->
+                    </tr>
+                    <tr><td colSpan="7" class="borderBottom"></td></tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </form>
+        <div style="clear:both;display:block;width:100%;margin:0;padding:0;text-align:left"><!-- button onclick="oSelectedRows.removeSelectedRows();">Remove Selection</button--><button onclick="addNewRowTemplate();">...add</button></div>
+    </body>
 </html>
