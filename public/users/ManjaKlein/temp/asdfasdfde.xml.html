@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body>
+<ul class="processingIntruction">&lt;? xml-stylesheettype="text/xsl" href="xml/xmltree.xsl" &gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Projeckt</span> <span class="attName">Name</span>="<span class="attValue">asdfasdfde</span>"
+ <span class="attName">Folder</span>="<span class="attValue">asdfsde</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Templates</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://freedom.localhost/DTDs/HTMLStrict.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">/var/www/freedom/users/ManjaKlein/projects/asdfsde/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/ManjaKlein/projects/asdfsde/Templates/defaultName3.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">projects/asdfsde/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;defaultName3.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>&lt;<span class="nodeName">Templates</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Pages</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">folder1/folder2/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">/var/www/freedom/users/ManjaKlein/folder1/folder2/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/ManjaKlein/folder1/folder2/defaultName3.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">folder1/folder2/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;defaultName3.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://freedom.localhost/users/ManjaKlein/projects/asdfsde/Templates/defaultName3.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">forder4/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">/var/www/freedom/users/ManjaKlein/forder4/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/ManjaKlein/forder4/defaultName4.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">forder4/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;defaultName4.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://freedom.localhost/users/ManjaKlein/projects/asdfsde/Templates/defaultName3.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>&lt;<span class="nodeName">Pages</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">XMLFiles</span>&gt;&lt;<span class="nodeName">XMLFiles</span>/&gt;</ul>&lt;<span class="nodeName">Projeckt</span>/&gt;</ul>
+</body>
+</html>

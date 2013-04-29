@@ -1,0 +1,142 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('Free-D.O.M Web XML-HTML Editor'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        <?php echo $this->headMeta()->appendName('Cache-Control', 'no-cache, no-store, must-revalidate') ?>
+        <?php echo $this->headMeta()->appendName('Pragma', 'no-cache') ?>
+        <?php echo $this->headMeta()->appendName('Expires', '0') ?>
+        <?php echo $this->headMeta()->appendName('content-type', 'text/html; charset=UTF-8') ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(
+                    array(
+                            'rel' => 'shortcut icon', 
+                            'type' => 'image/vnd.microsoft.icon', 
+                            'href' => $this->basePath() . '/img/favicon.ico'
+                     )
+                )
+                ->prependStylesheet($this->basePath() . '/css/menu.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile(
+                    $this->basePath() . '/js/html5.js', 
+                    'text/javascript', 
+                    array('conditional' => 'lt IE 9',)
+                )
+                ->prependFile($this->basePath() . '/js/display0_0.js')
+                ->prependFile($this->basePath() . '/js/layoutActions.js')
+                ->prependFile($this->basePath() . '/js/divEfects.js') 
+                ->prependFile($this->basePath() . '/js/currentFileObj.js') 
+                ->prependFile($this->basePath() . '/js/treeli.js') 
+                ->prependFile($this->basePath() . '/js/menuActions.js') 
+                ->prependFile($this->basePath() . '/js/menuInitialitation.js') 
+                ->prependFile($this->basePath() . '/js/menuClass.js') 
+                ->prependFile($this->basePath() . '/js/DOMFunctions.js') 
+                ->prependFile($this->basePath() . '/js/wcms.js') 
+                ->prependFile($this->basePath() . '/js/WAjax2.js')?>
+        <script language="JavaScript" type = "text/javascript">
+            <!--
+            var isCtrl = false;
+            var currentFontSize = 100;
+            //-->
+        </script>
+        <style type="text/css">
+            <!--
+            body{
+                background:#F9F9F9;
+                font-family: Verdana, Tahoma, "Helvetica CE", "Trebuchet MS";
+
+            }
+            html{
+                overflow:hidden;
+            }
+            .bodyHeader ul
+            {
+                list-style-type: none;
+                color: #333333;
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.5;
+                font-size: 12px;
+                padding-left:5px;
+                padding-top:0px;
+                padding-right:0px;
+                padding-bottom:3px;
+                margin:0px;
+            }
+            .treeContainer
+            {
+                border: 1px dotted #CCCCCC;
+                vertical-align: baseline;
+                padding-left:0px;
+                /*background-position: left center;*
+                /*padding:3px 3px 3px 0px;*/
+            }
+            .subcat
+            {
+                margin:0;
+                padding:0;
+            }
+            a{
+                font-weight:bold;
+                cursor:pointer; 
+                cursor:hand;
+                color:black;
+                text-underline:none; 
+                text-decoration:none;
+            }
+            a:hover{
+                cursor:pointer; 
+                cursor:hand;
+                background:#ECE9D8;
+            }
+            a:link{
+                text-underline:none; 
+                text-decoration:none; 
+            }
+            a:visited{
+                text-underline:none; 
+                text-decoration:none; 
+            }
+            .BTNElementNode
+            {
+                margin-left:5px;
+            }
+            .classHeader
+            {
+
+            }
+            .minButton{
+                float:right;
+            }
+            .maxButton{
+                float:right;
+            }
+            .closeButton{
+                float:right;
+            }
+            .buttonPannel{
+                float:right;
+            }
+            .Title
+            {
+                float:left;
+            }
+            -->
+        </style>
+
+    </head>
+    <body>
+         <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Fernando Macias Ruano - fmaciasruano@gmail.com <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
+

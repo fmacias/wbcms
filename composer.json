@@ -1,0 +1,16 @@
+{
+    "name": "wunderbit/Free-D.O.M",
+    "description": "XML & HTML File Management System",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "Javascript XML Editor",
+        "Wunderbit Content Management System",
+        "Javascript HTML Editor",
+        "CMS"
+    ],
+    "homepage": "http://www.wunderbit.com/",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": ">2.1.3"
+    }
+}

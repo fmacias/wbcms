@@ -1,0 +1,51 @@
+# Treat files as UTF-8
+AddType x-mapp-php5 .php
+AddHandler x-mapp-php5 .php
+AddCharset UTF-8 .html
+AddCharset UTF-8 .htm
+
+RewriteEngine On
+# The following rule tells Apache that if the requested filename
+# exists, simply serve it.
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+# The following rewrites all other queries to index.php. The 
+# condition ensures that if you are using Apache aliases to do
+# mass virtual hosting, the base path will be prepended to 
+# allow proper resolution of the index.php file; it will work
+# in non-aliased environments as well, providing a safe, one-size 
+# fits all solution.
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)(.+)::\2$
+RewriteRule ^(.*) - [E=BASE:%1]
+RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
+
+#auth
+authType Basic
+AuthName "wb editor"
+AuthUserFile /home/fernando/workspace/freeDOM/application/public/.htpasswd
+require user Susanne
+require user Fernando
+require user ArbeitsAmt
+require user ADVA
+require user dTestUser
+require user trollgames
+require user metron
+require user SlipShift
+require user dmc
+require user Interlake
+require user Pit-Cup
+require user CFutures
+require user ManjaKlein
+require user BallyWulff
+require user BallyWulff
+require user BallyWulff
+require user Nedo
+require user hays
+require user knewmedia
+require user anderson
+require user andersson
+require user workstation
+
+
