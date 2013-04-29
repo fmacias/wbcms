@@ -28,7 +28,7 @@ Using Composer (recommended)
 Installation:
 
     curl -s https://getcomposer.org/installer | php --
-    git clone git://github.com/wunderbit/FreeDOM.git
+    git clone https://github.com/fmacias/wbcms.git
     php composer.phar install
    
 Set up a user:
