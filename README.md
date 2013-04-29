@@ -5,9 +5,9 @@ Introduction
 ------------
 Free-D.O.M. (Document Object Model)
 
-This is a simple application written for learning purpouses.
-This application was written at the begining without any php framework and
-currently adapted to work unter a Zend Framework 2 application. Basically the 
+This is a simple application written for learning purposes.
+This application was written at the begin without any php framework and
+currently has been adapted to work unter a Zend Framework 2. Basically the 
 application it composed by the modules written in its module folder.
 
 This application allows you to get html from the any web and download into one
@@ -18,7 +18,7 @@ web sites and to make a good use of the application.
 
 The application could be extended to edit big XML files with your browser,
 create a whole CMS, allow XPath expresions, create a visual Mapping Interface
-for XML Standarizations. Theses features are not avaiable at today.
+for XML Unification ( mapping ). Theses features are not available at today.
 
 Installation
 ------------
@@ -32,15 +32,14 @@ Installation:
     php composer.phar install
    
 Set up a user:
+    rename the files htaccess.dist and htpasswd.dist
+    and checkout them to modify one path.
 
-    modify the .htaccess file unther the public folder.
-
-    The application requires basic authentification, so that its possible to
-    create serveral users, and each one will have his own file structure.
-    Because of that you need to create the user an modify the .htaccess file unther 
-    the public folder.
-
+    The application requires basic Autentification, so that its possible to
+    create several users, and each one will have his own file structure.
+    
     I provide one test user for testing operation with a testing file structure.
+    user: Anonym password: anonym
 
 Virtual Host
 ------------

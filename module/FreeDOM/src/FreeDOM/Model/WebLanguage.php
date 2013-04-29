@@ -8,7 +8,6 @@
  * with this package in the file LICENSE.txt.
  *
  * @category   Free-D.O.M
- * @package    Asset
  * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
  * @license    http://www.wunderbit.com/license     New BSD License
  */

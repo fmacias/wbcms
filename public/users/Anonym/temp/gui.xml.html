@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body><ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">gui-definition</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">colors</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">background</span>&gt;#808080&lt;<span class="nodeName">background</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">text</span>&gt;#000000&lt;<span class="nodeName">text</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">header</span>&gt;#008000&lt;<span class="nodeName">header</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">link</span> <span class="attName">normal</span>="<span class="attValue">#000080</span>"
+ <span class="attName">visited</span>="<span class="attValue">#800080</span>"
+&gt;&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">default</span>&gt;${colors.header}&lt;<span class="nodeName">default</span>/&gt;</ul>&lt;<span class="nodeName">colors</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">rowsPerPage</span>&gt;15&lt;<span class="nodeName">rowsPerPage</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">buttons</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">name</span>&gt;OK,Cancel,Help&lt;<span class="nodeName">name</span>/&gt;</ul>&lt;<span class="nodeName">buttons</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">numberFormat</span> <span class="attName">pattern</span>="<span class="attValue">###\,###.##</span>"
+&gt;&lt;<span class="nodeName">numberFormat</span>/&gt;</ul>&lt;<span class="nodeName">gui-definition</span>/&gt;</ul></body>
+</html>

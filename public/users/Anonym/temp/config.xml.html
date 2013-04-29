@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body>
+<ul class="processingIntruction">&lt;? xml-stylesheettype="text/xsl" href="xml/xmltree.xsl" &gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Projeckt</span> <span class="attName">Name</span>="<span class="attValue">config</span>"
+ <span class="attName">Folder</span>="<span class="attValue">XML_HTML_and_More</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Templates</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.wunderbit.com/DTDs/HTML5.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/projects/XML_HTML_and_More/Templates/empyHTML5.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;empyHTML5.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.wunderbit.com/DTDs/XHTMLTransitional.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/projects/XML_HTML_and_More/Templates/emptyXHTMLTransitional.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;emptyXHTMLTransitional.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.wunderbit.com/DTDs/XHTMLStrict.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/projects/XML_HTML_and_More/Templates/emptyHTMLStrict.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xhtml+xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;emptyHTMLStrict.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.templateyes.com/preview/046/index.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/projects/XML_HTML_and_More/Templates/bussines_2.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">windows-1250</span>"
+&gt;bussines_2.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.templateyes.com/preview/045/index.html</span>"
+ <span class="attName">Path</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/projects/XML_HTML_and_More/Templates/music_2.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">projects/XML_HTML_and_More/Templates/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">windows-1250</span>"
+&gt;music_2.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>&lt;<span class="nodeName">Templates</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Pages</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">bussines/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">bussines/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/bussines/home.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">bussines/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">windows-1250</span>"
+&gt;home.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;projects/XML_HTML_and_More/Templates/bussines.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Id</span>="<span class="attValue"></span>"
+ <span class="attName">Lang</span>="<span class="attValue"></span>"
+ <span class="attName">Default</span>="<span class="attValue">false</span>"
+ <span class="attName">Path</span>="<span class="attValue">apache/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/apache/dbScenario.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">apache/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue"></span>"
+&gt;dbScenario.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">music/pianos/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">music/pianos/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/music/pianos/pianos.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">music/pianos/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">windows-1250</span>"
+&gt;pianos.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;projects/XML_HTML_and_More/Templates/music.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Page</span> <span class="attName">Folder</span>="<span class="attValue">music/</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">Path</span>="<span class="attValue">music/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/music/music_2.html</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">HTML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">music/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/html</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/html</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;music_2.html&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">TemplateFileName</span>&gt;http://freedom.localhost/users/Anonym/projects/XML_HTML_and_More/Templates/empyHTML5.html&lt;<span class="nodeName">TemplateFileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">Data</span>&gt;&lt;<span class="nodeName">Data</span>/&gt;</ul>&lt;<span class="nodeName">Page</span>/&gt;</ul>&lt;<span class="nodeName">Pages</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">XMLFiles</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">apache/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/apache/dbScenario.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">apache/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;dbScenario.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">apache/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/apache/validXML.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">apache/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">ISO-8859-1</span>"
+&gt;validXML.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">JAX-RCP/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/JAX-RCP/SunReg.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">JAX-RCP/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;SunReg.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">JAX-RCP/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/JAX-RCP/JWSDP.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">JAX-RCP/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;JWSDP.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">JAX-RCP/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/JAX-RCP/config.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">JAX-RCP/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;config.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">tomcat/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/tomcat/web.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">tomcat/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;web.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">struts/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/struts/struts-config-1.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">struts/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;struts-config-1.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://feed.phlow-magazine.com/phlow-magazine?format=xml</span>"
+ <span class="attName">Path</span>="<span class="attValue">rss/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/rss/rssExample.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">rss/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">text/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">text/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;rssExample.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue">http://www.diariovasco.com/rss/feeds/ultima.xml</span>"
+ <span class="attName">Path</span>="<span class="attValue">rss/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/rss/diario.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">rss/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;diario.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">namespaces/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/namespaces/nameSpaces.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">namespaces/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">UTF-8</span>"
+&gt;nameSpaces.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">test/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/test/xmltree.xsl</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XSL</span>"
+ <span class="attName">Folder</span>="<span class="attValue">test/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">iso-8859-1</span>"
+&gt;xmltree.xsl&lt;<span class="nodeName">FileName</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">FileName</span> <span class="attName">BaseURL</span>="<span class="attValue"></span>"
+ <span class="attName">Path</span>="<span class="attValue">/var/www/freedom/users/Anonym/config_template/</span>"
+ <span class="attName">URL</span>="<span class="attValue">http://freedom.localhost/users/Anonym/config_template/config_template.xml</span>"
+ <span class="attName">FileExtension</span>="<span class="attValue">XML</span>"
+ <span class="attName">Folder</span>="<span class="attValue">config_template/</span>"
+ <span class="attName">ContentType</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">ParserMime</span>="<span class="attValue">application/xml</span>"
+ <span class="attName">charSet</span>="<span class="attValue">utf-8</span>"
+&gt;config_template.xml&lt;<span class="nodeName">FileName</span>/&gt;</ul>&lt;<span class="nodeName">XMLFiles</span>/&gt;</ul>&lt;<span class="nodeName">Projeckt</span>/&gt;</ul>
+</body>
+</html>

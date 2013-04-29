@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body><ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">rss</span> <span class="attName">version</span>="<span class="attValue">2.0</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">channel</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;diariovasco.com - Última hora&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;diario, vasco, gipuzkoa, guipuzcoa, noticias, archivo, hemeroteca, buscador&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">language</span>&gt;es-ES&lt;<span class="nodeName">language</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">image</span>&gt;&lt;<span class="nodeName">image</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 22:55:02 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Israel cambiado aprueba una ley que dificulta la devolución de Jerusalén Este&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/internacional/israel-aprueba-dificulta-devolucion-201011222326.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;El Parlamento israelí ha aprobado una ley que impone que cualquier devolución de los territorios anexionados por Israel (Jerusalén Este y los Altos del Golán) requiera el apoyo de una mayoría absoluta de diputados y un referendo popular.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 22:42:12 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/internacional/israel-aprueba-dificulta-devolucion-201011222326.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Lindsay Lohan se queda fuera de 'Inferno'&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/cultura/lindsay-lohan-queda-fuera-201011222312.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;Poco le ha durado a Lindsay Lohan su resurgir cinematográfico. La díscola actriz ya no será Linda Lovelace en Inferno, el biopic sobre la estrella porno conocida como 'Garganta profunda'. Lohan será sustituida por Malin Akerman, la protagonista femenina de Watchmen.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 22:22:08 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/cultura/lindsay-lohan-queda-fuera-201011222312.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;El Getafe, incapaz de ganar al Zaragoza&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/deportes/mas-futbol/getafe-zaragoza-citan-duelo-201011220104.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;El Getafe se atascó en el estreno del mexicano Javier Aguirre en el banquillo del Zaragoza, que planteó un partido rocoso al equipo de Míchel, incapaz de rematar a un rival que jugó casi toda la segunda parte con un jugador menos por la expulsión del argentino Leonardo Ponzio.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 22:10:41 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/deportes/mas-futbol/getafe-zaragoza-citan-duelo-201011220104.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Nadal-Roddick, en directo&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/masters/partido-en-directo.html?POB_07572_10_01_00003&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;Nadal aspira a la remontada tras igualar el partido en el tie-break del segundo set (3-6, 7-6) | Djokovic ha ganado en el primer partido de la jornada al checo Tomas Berdych.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 22:07:57 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/masters/partido-en-directo.html?POB_07572_10_01_00003&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Al menos 339 muertos en una estampida en Camboya&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/internacional/menos-centenar-muertos-estampida-201011221959.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;Al menos 339 personas han muerto y unas 300 resultado heridas en una estampida ocurrida en Phnom Penh, la capital de Camboya, durante el festejo del Festival del Agua, ha indicado el primer ministro, Hun Sen.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 21:57:57 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/internacional/menos-centenar-muertos-estampida-201011221959.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Tenis/Copa de Maestros: Rafael Nadal-Andy Roddick&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/masters/partido-en-directo.html?POB_07572_10_01_00003&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">description</span>&gt;&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 21:57:26 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/masters/partido-en-directo.html?POB_07572_10_01_00003&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;El Gobierno irlandés convocará elecciones tras votar el recorte&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/economia/rescate-rompe-unidad-gobierno-201011221405.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;El primer ministro irlandés, Brian Cowen, ha descartado presentar su dimisión y convocar elecciones generales anticipadas mientras su Gobierno continua negociando con la Unión Europea (UE) y el Fondo Monetario Internacional (FMI) los términos del rescate financiero.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 21:55:10 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/economia/rescate-rompe-unidad-gobierno-201011221405.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;La Audiencia Nacional será el primer tribunal sin papel&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/nacional/audiencia-nacional-sera-primer-201011222239.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;El ministro de Justicia, Francisco Caamaño, ha digitalizado la página 4.000.000 de la Audiencia Nacional dentro del proceso para implantar el expediente digital que comenzó el pasado septiembre y que tiene previsto concluir en marzo de 2011, con lo que será el primer tribunal sin papel en España.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 21:50:12 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/nacional/audiencia-nacional-sera-primer-201011222239.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Enfrentamientos con la policía en Dublín por el rescate de Irlanda&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/economia/enfrentamientos-policia-dublin-rescate-201011222159.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;Simpatizantes del Sinn Fein han pedido al primer ministro irlandés, Brian Cowen que dimita y disuelva el Parlamento por la crisis de deuda que arrasa el país y después de que el gobierno aceptara el plan de rescate económico de la Unión Europea (UE) y del Fondo Monetario Internacional (FMI).&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 21:23:57 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/mas-actualidad/economia/enfrentamientos-policia-dublin-rescate-201011222159.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">item</span>&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">title</span>&gt;Reina: «Ojalá Casillas fuese 'Balón de Oro'»&lt;<span class="nodeName">title</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">link</span>&gt;http://www.diariovasco.com/rc/20101122/deportes/mas-futbol/reina-ojala-casillas-fuese-201011221901.html&lt;<span class="nodeName">link</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">description</span>&gt;Pepe Reina, el segundo portero de España, suplente de Casillas en la selección, ha decidido plasmar en un libro sus vivencias durante el Mundial de Sudáfrica. Es la experiencia de un mes y medio, mezclada con mi trayectoria, y hay momentos en que llega a emocionar , asegura el guardameta del Liverpool en referencia a El mundo en nuestras manos , presentado este lunes por el propio futbolista.&lt;<span class="nodeName">description</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">pubDate</span>&gt;Mon, 22 Nov 2010 21:12:23 GMT&lt;<span class="nodeName">pubDate</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">guid</span>&gt;http://www.diariovasco.com/rc/20101122/deportes/mas-futbol/reina-ojala-casillas-fuese-201011221901.html&lt;<span class="nodeName">guid</span>/&gt;</ul>&lt;<span class="nodeName">item</span>/&gt;</ul>&lt;<span class="nodeName">channel</span>/&gt;</ul>&lt;<span class="nodeName">rss</span>/&gt;</ul></body>
+</html>

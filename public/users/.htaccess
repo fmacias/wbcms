@@ -1,3 +1,4 @@
+RewriteEngine Off
 # should be rectricted and each user should only be able to see his folder
 # its done in that way for now. Application still in development mode
 Satisfy Any

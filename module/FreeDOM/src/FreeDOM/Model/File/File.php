@@ -81,7 +81,8 @@ class File
 
             if ($this->setFolder($fileFolder))
             {
-                $this->sPath = FILESYSTEM_PATH . $this->sFolder;
+                #$this->sPath = FILESYSTEM_PATH . $this->sFolder;
+                $this->sPath = $this->sFolder;
                 $this->sHttpPath = URL_PATH . $this->sFolder;
                 $this->sFilename = $sFileNameIn;
                 $this->setDefaultContentType(); //sets sContent type and File Extension
@@ -173,12 +174,12 @@ class File
         try {
 
             //clearstatcache();
-            if (file_exists($this->sPath . $this->sFilename))
+            if (file_exists(FILESYSTEM_PATH.$this->sPath . $this->sFilename))
             {
                 
             } else
             {
-                $ourFileHandle = fopen($this->sPath . $this->sFilename, 'w');
+                $ourFileHandle = fopen(FILESYSTEM_PATH.$this->sPath . $this->sFilename, 'w');
                 if ($ourFileHandle == false)
                 {
                     throw new \Exception(
@@ -410,14 +411,14 @@ class File
     public function file_put_contents($data)
     {
         try {
-
+            $currentFile = FILESYSTEM_PATH.$this->sPath . $this->sFilename;
             if (
-                    ($h = fopen($this->sPath . $this->sFilename, 'w')) === false
+                    ($h = fopen($currentFile, 'w')) === false
             )
             {
                 throw new \Exception(
-                "\n\tFile->file_put_contents: fopen fails for file" .
-                $this->sPath . $this->sFilename . "\n"
+                    "\n\tFile->file_put_contents: fopen fails for file" .
+                    $this->sPath . $this->sFilename . "\n"
                 );
             }
 
@@ -446,7 +447,7 @@ class File
     {
         try {
 
-            if (file_exists($this->sPath . $this->sFilename))
+            if (file_exists(FILESYSTEM_PATH.$this->sPath . $this->sFilename))
                 unlink($this->sPath . $this->sFilename);
         } catch (\Exception $e) {
             throw new \Exception(
@@ -470,7 +471,7 @@ class File
     public function setParserContentType()
     {
         try {
-            $completeFileName = $this->sPath . $this->sFilename;
+            $completeFileName = FILESYSTEM_PATH.$this->sPath . $this->sFilename;
             $fileExtension = $this->fileExtension;
             $newDOM = new \DOMDocument();
             switch ($this->sContentType) {

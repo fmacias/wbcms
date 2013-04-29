@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://java.sun.com/jax-rpc-ri/xrpcc-config">
+   <rmi name="SunReg"
+      targetNamespace="http://sunreg.org/wsdl"
+
+      typeNamespace="http://sunreg.org/types">
+      <service name="SunRegService"
+        packageName="sunreg">
+         <interface name="SunRegPort"
+            servantName="SunRegImpl"/>
+
+      </service>
+   </rmi>
+</configuration>

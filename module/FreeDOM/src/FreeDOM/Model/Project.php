@@ -168,7 +168,7 @@ class Project
             $appendedChild = $root->appendChild($Pages);
             $appendedChild = $root->appendChild($XMLFiles);
             $appendedChild = $newDOM->appendChild($root);
-
+            
             if ($newDOM->save(PROJEKTS_PATH . $this->sXMLFileName))
             {
                 unset($newDOM);

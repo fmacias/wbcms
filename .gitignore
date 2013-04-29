@@ -2,4 +2,6 @@ nbproject
 composer.lock
 composer.phar
 vendor/
+public/users/Fernando/
+
 

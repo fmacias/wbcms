@@ -118,7 +118,16 @@ class FreeDOM extends Project
             throw new \Exception('CurrentFile->setCurrent: ' . $e->getMessage() . '\n');
         }
     }
-
+    public function getAbsoluteFileName()
+    {
+        $absolutFileName = sprintf(
+                '%s%s%s',
+                FILESYSTEM_PATH,
+                $this->curOFileObj->sPath,
+                $this->curOFileObj->sFilename
+        );
+        return $absolutFileName;
+    }
     /**
      * 
      * @return type
@@ -298,7 +307,7 @@ class FreeDOM extends Project
 //
             $bytes = 0;
             $newDOM = new \DOMDocument("1.0", $this->curOFileObj->charSet);
-            $selfDOM->load($this->currentFSFile);
+            $selfDOM->load(FILESYSTEM_PATH.$this->currentFSFile);
             $newDOM->loadXML($DOMString);
             $curDocElement = $newDOM->documentElement;
             $newElement = $selfDOM->importNode($curDocElement, true);

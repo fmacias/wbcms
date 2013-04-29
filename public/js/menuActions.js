@@ -290,7 +290,7 @@ function loadFile(oFileIndex,sFileCategorie,isConfigFile)
 			{
 				throw new Error("menuActions.js->loadFile()::AJAXRqstSetDefaultFile.reply.onReply. Error: "+e.message);
 			}
-		};
+		};window.alert(oFileIndex+" "+sFileCategorie);
                 AJAXRqstSetDefaultFile.requestSendForm("FileIndex="+oFileIndex+"&FileCategorie="+sFileCategorie,"freedom/requestsetfile");
 		//AJAXRqstSetDefaultFile.requestSendForm("FileIndex="+oFileIndex+"&FileCategorie="+sFileCategorie,"requestSetFile.php");
 	}catch(e)
@@ -1153,9 +1153,14 @@ oNewTemplate.doAction = function ()
 		try
 		{
 			//window.alert("oMenuProjekt.menuItems.helpAbout");
-			var innerHTML = "licence";
-                        var dialog = new floatWindow(null,null,null,600,300);
-                        dialog.draw(innerHTML,null,true,true);
+			//var innerHTML = "licence";
+                        //var dialog = new floatWindow(null,null,null,600,300);
+                        //dialog.draw(innerHTML,null,true,true);
+                        //var dialog = new floatWindow(null,null,null,900,400);
+                        var dialog = new floatWindow(null,null,null,900,400);
+                        dialog.draw(null,'maintanance/licence.html',true,false);
+                        dialog.container.setWindowName("Licence");
+                        dialog.container.setWindowTitle("BSD-3-Clause");
 			//oMenuHelp.removeMenuHTMLContainers();
 		}catch(e)
 		{

@@ -1,0 +1,7 @@
+<configuration
+   xmlns="http://java.sun.com/jax-rpc-ri/xrpcc-config">
+   <wsdl name="SunRegService"
+      location="http://howru:8080/sunreg/jaxrpc?WSDL"
+
+      packageName="sunreg" />
+</configuration>

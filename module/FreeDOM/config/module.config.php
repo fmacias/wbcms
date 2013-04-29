@@ -15,11 +15,11 @@ return array(
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
-                    )#,
-                    #'defaults' => array(
-                    #    'controller' => 'FreeDOM\Controller\FreeDOM',
-                    #    'action'     => 'index',
-                    #),
+                    ),
+                    'defaults' => array(
+                        'controller' => 'FreeDOM\Controller\FreeDOM',
+                        'action'     => 'index',
+                    ),
                 ),
             ),
         ),

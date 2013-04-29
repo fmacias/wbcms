@@ -42,6 +42,7 @@ var selectedFile =
 					throw new Error("\nselectedFile.getFile.AJAXrqstOriginalDOM.reply.onReply fails. Error "+e.message);
 				}
 			};
+                        alert("get file:"+this.file);
                         AJAXrqstOriginalDOM.requestSendForm("fileName="+this.file,"freedom/getfile");
 			//AJAXrqstOriginalDOM.requestSendForm("fileName="+this.file,"getFile.php");
 		}catch(e)

@@ -1,0 +1,27 @@
+<web-app>
+   <context-param>
+      <param-name>dbUrl</param-name>
+
+      <param-value>jdbc:cloudscape:sunregDB</param-value>
+   </context-param>
+   <servlet>
+      <servlet-name>SunregEndpoint</servlet-name>
+      <servlet-class>com.sun.xml.rpc.server.http.JAXRPCServlet
+      </servlet-class>
+
+      <init-param>
+         <param-name>configuration.file</param-name>
+         <param-value>
+             /WEB-INF/SunRegService_Config.properties
+         </param-value>
+      </init-param>
+
+      <load-on-startup>0</load-on-startup>
+   </servlet>
+   <servlet-mapping> 
+      <servlet-name>SunregEndpoint
+      </servlet-name>
+      <url-pattern>/jaxrpc/*</url-pattern>
+
+   </servlet-mapping>
+</web-app>

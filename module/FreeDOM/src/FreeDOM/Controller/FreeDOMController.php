@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * Free-D.O.M
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ *
+ * @category   Free-D.O.M
+ * @copyright  Copyright (c) 2009-2013, Fernando Macias Ruano, www.wunderbit.com < fmaciasruano@gmail.com > .
+ * @license    http://www.wunderbit.com/license     New BSD License
+ */
 namespace FreeDOM\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -15,7 +26,7 @@ class FreeDOMController extends AbstractActionController
     {
 	try
 	{
-	        $this->layout('layout/json');
+	        $this->prepare();
 		$selectedProject = $_POST["selectedProject"];
 		$currentNewProject = new FreeDOM();
 		if ($currentNewProject->loadProject($selectedProject))
@@ -34,8 +45,7 @@ class FreeDOMController extends AbstractActionController
     }
     public function getProjectsAction()
     {
-
-        $this->layout('layout/json');
+        $this->prepare();
         $oProjeckt = new Project();
         $aProjekts = $oProjeckt->getProjectsFromFileSystemPath();
         unset($oProjeckt);
@@ -47,7 +57,7 @@ class FreeDOMController extends AbstractActionController
     public function createProjectAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $ProjectName = trim($_POST["porjectName"]);
             $ProjectFolder = trim($_POST["projectFolder"]);
             if ($ProjectName == "")
@@ -72,7 +82,7 @@ class FreeDOMController extends AbstractActionController
     public function getProjectViewXMLAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $projektXMLFile = $_SESSION["CurrentFile"]->getProjektXMLFile();
             $projektName = $_SESSION["CurrentFile"]->getProjektName();
             $XMLURL = PROJEKTS_URL . $projektXMLFile;
@@ -86,7 +96,7 @@ class FreeDOMController extends AbstractActionController
     public function requestSetFileAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $curFileIndex = $_POST["FileIndex"]; //File Index
             $curCategorie = $_POST["FileCategorie"];
             $oFile = NULL;
@@ -122,9 +132,12 @@ class FreeDOMController extends AbstractActionController
     public function getFileAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             header('Content-type: text/xml; charset=utf-8');
-            echo file_get_contents($_SESSION["CurrentFile"]->currentFSFile);
+            $currentFile = $_SESSION["CurrentFile"]->getAbsoluteFileName();
+            echo file_get_contents(
+                   $currentFile
+            );
         } catch (Exception $e) {
             echo('getFile fails: ' . $e->getMessage() . '\n');
         }
@@ -134,11 +147,11 @@ class FreeDOMController extends AbstractActionController
     public function rqstxmltreeAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $tempFileName = $_SESSION["CurrentFile"]->currentFile . ".html";
             $tempFile = new FreeDOMFile($tempFileName, "temp");
             //
-            $currentFile = $_SESSION["CurrentFile"]->currentFSFile;
+            $currentFile = $_SESSION["CurrentFile"]->getAbsoluteFileName();
             $xslFilePath = APP_PATH . "xml/xmltree.xsl";
             $doc = new \DOMDocument();
 
@@ -159,7 +172,7 @@ class FreeDOMController extends AbstractActionController
     public function saveProjectIntoXMLAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $_SESSION["CurrentFile"]->saveProjectIntoXML();
             echo ('{}');
         } catch (Exception $e) {
@@ -171,7 +184,7 @@ class FreeDOMController extends AbstractActionController
     public function requestTemplatesAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $JSONString = $_SESSION["CurrentFile"]->oTemplates->getFilesJSON();
             header('Content-type: text/plain; charset=UTF-8');
             echo($JSONString);
@@ -183,26 +196,26 @@ class FreeDOMController extends AbstractActionController
 
     public function mainTemplatesAction()
     {
-        $this->layout('layout/json');
+        $this->prepare();
         return $this->mainTemplates();
     }
 
     public function removeTemplateAction()
     {
-        $this->layout('layout/json');
+        $this->prepare();
         return $this->removeTemplate();
     }
 
     public function mainPagesAction()
     {
-        $this->layout('layout/json');
+        $this->prepare();
         return $this->mainPages();
     }
 
     public function requestPagesAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $JSONString = $_SESSION["CurrentFile"]->oPages->getFilesJSON();
             header('Content-type: text/plain;charset=UTF-8');
             echo($JSONString);
@@ -215,7 +228,7 @@ class FreeDOMController extends AbstractActionController
     public function removePageAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $FileNameId = $_POST["FileNameId"];
             $curFile = $_SESSION["CurrentFile"]->curOFileObj;
             $curCompleteFileName = $curFile->sFolder . $curFile->sFilename;
@@ -240,7 +253,7 @@ class FreeDOMController extends AbstractActionController
     public function requestXmlFilesAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $JSONString = $_SESSION["CurrentFile"]->oXMLFiles->getFilesJSON();
             header('Content-type: text/plain;charset=UTF-8');
             echo($JSONString);
@@ -252,14 +265,14 @@ class FreeDOMController extends AbstractActionController
 
     public function mainRelPageDataAction()
     {
-        $this->layout('layout/json');
+        $this->prepare();
         return $this->mainRelPageData();
     }
 
     public function removeDataRelationAction()
     {
         try {
-            $this->layout('layout/json');
+            $this->prepare();
             $FileNameId = $_POST["FileNameId"];
             $PageFileName = $_POST["PageFileName"];
             $currentPage = $_SESSION["CurrentFile"]->oPages->aFiles[$PageFileName];
@@ -276,7 +289,7 @@ class FreeDOMController extends AbstractActionController
     {
         try
 	{
-		$this->layout('layout/json');
+		$this->prepare();
 		$FileNameId = $_POST["FileNameId"];
 
 		$curFile = $_SESSION["CurrentFile"]->curOFileObj;
@@ -302,14 +315,14 @@ class FreeDOMController extends AbstractActionController
 
     public function mainXmlFilesAction()
     {
-        $this->layout('layout/json');
+        $this->prepare();
         return $this->mainXmlFiles();
     }
     public function saveXMLFileAction()
     {
 	try
 	{
-                $this->layout('layout/json');
+                $this->prepare();
 		$currentSession = $_SESSION["CurrentFile"];
 		$FileContent= utf8_encode(file_get_contents( "php://input"));
 		$FileContent= file_get_contents( "php://input");
@@ -328,7 +341,7 @@ class FreeDOMController extends AbstractActionController
     {
 	try
 	{
-                $this->layout('layout/json');
+                $this->prepare();
         	$currentSession = $_SESSION["CurrentFile"];
 	        $mime = $currentSession->curOFileObj->sContentType;
         	$charset = $currentSession->curOFileObj->charSet;
@@ -349,12 +362,12 @@ class FreeDOMController extends AbstractActionController
     }
     public function saveSourceCodeAction()
     {
-         $this->layout('layout/json');
+         $this->prepare();
 	 return $this->saveSourceCode();
     }
     public function saveHTMLDOMAction()
     {
-        $this->layout('layout/json');
+        $this->prepare();
 	return $this->saveHTMLDOM();
     }
 
@@ -811,5 +824,115 @@ class FreeDOMController extends AbstractActionController
                 echo('saveDOM fails: '.  $e->getMessage(). '\n');
         }
         return true;
+    }
+    private function prepare()
+    {
+        # empty layout
+        #@todo each actio should have one tamplate
+        #that returns one json. but for now its ok
+        $this->layout('layout/json');
+        # Instance of Class  FreeDOM\Model\FreeDOM
+        # its stored in the session
+        session_start();
+        $user = $_SERVER['REMOTE_USER'];
+        # Define constants 
+        $this->defineConstants($user);
+        # each user hast one working directory
+        # for now.
+        # @todo one user several working directories
+        $this->setUserWorkFolders($user);
+    }
+    private function createFolder($fileFolder)
+    {
+        try {
+            # check the folder sintax
+            $fileFolder = ltrim($fileFolder);
+            $fileFolder = rtrim($fileFolder);
+            $aFolders = split('[/]', $fileFolder);
+            $FolderLength = count($aFolders);
+            $pattern = '/(?i:\\|\:|\*|\?|"|<|>|\|)/';
+            foreach ($aFolders as $fKey => $fValue) {
+
+                if (preg_match($pattern, $fValue) == 1)
+                {
+                    throw new \Exception(
+                    "\n\tcreateFolder: Folders or a Files names can 
+                                not contain any of the following characters: 
+                                \/:*?''<> |\n");
+                }
+            }
+            $currentPath = WBit_PATH . 'users/';
+            $currentFolder = "";
+            $bSetFolder = TRUE;
+            foreach ($aFolders as $fKey => $fValue) {
+
+                if ($fValue != "")
+                {
+                    //echo "setFolder->".$fValue."\n";
+                    if (!(file_exists($currentPath . '/' . $fValue)))
+                    {
+                        $folderCreated = mkdir($currentPath . '/' . $fValue);
+                        $bSetFolder = $folderCreated;
+                    } else
+                    {
+                        $bSetFolder = TRUE;
+                    }
+                    if ($bSetFolder)
+                    {
+                        $currentPath = $currentPath . '/' . $fValue;
+                        $currentFolder .= $fValue . '/';
+                    } else
+                    {
+                        throw new \Exception(
+                        "\n\tcreateFolder: The file could not be 
+                                created: path: " . $currentPath . "\n"
+                        );
+                    }
+                }
+            }
+            return true;
+        } catch (\Exception $e) {
+            throw new \Exception("\n\tcreateFolder: " . $e->getMessage() . "\n");
+            //return false;
+        }
+    }
+
+    private function setUserWorkFolders($user)
+    {
+        if ($this->createFolder("$user/projects/") == false)
+        {
+            throw new \Exception('setUserWorkFolders fails: ' . $e->getMessage() . '\n');
+        }
+    }
+
+    /**
+     * @todo do not use constant for this subject.
+     * configuration file should be adedd to store
+     * this required values.
+     * For now leave it in that way.
+     * @param type $user
+     */
+    private function defineConstants($user)
+    {
+        define("USER", $user);
+        //
+        define("WBit_URL", "http://" . $_SERVER['HTTP_HOST'] . "/");
+        define("WBit_PATH", $_SERVER['DOCUMENT_ROOT'] . "/");
+        define("APP_PATH", $_SERVER['DOCUMENT_ROOT'] . "/");
+        define("APP_FOLDER", "freedom/");
+        # public folder with empty files used for the application to create empty templates
+        define("DTDs_FOLDER", "DTDs/");
+        # Root URL
+        define("URL_PATH", "http://" . $_SERVER['HTTP_HOST'] . "/users/$user/");
+        # absolute PATH of the server root folder
+        define("FILESYSTEM_PATH", $_SERVER['DOCUMENT_ROOT'] . "/users/$user/");
+        # folder with the projekt files
+        define("PROJEKTS_PATH",
+                $_SERVER['DOCUMENT_ROOT'] . "/users/$user/projects/");
+        # folder with the projekt files
+        define("PROJEKTS_URL",
+                "http://" . $_SERVER['HTTP_HOST'] . "/users/$user/projects/");
+        # folder with the projekt files
+        define("PROJEKTS_FOLDER", "projects/");
     }
 }

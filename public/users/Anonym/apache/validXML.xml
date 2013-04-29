@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<configuration>
+  <test.value>42</test.value>
+  <test.complex>
+    <test.sub.element>many dots</test.sub.element>
+  </test.complex>
+</configuration>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	li{
+		list-style-position: outside;
+		list-style-type: none;
+		display: list-item;
+	}
+	span{
+		font-weight:bold;
+	}
+	.nodeName{
+		color:#CC0099;
+	}
+	.attValue{
+		color:#0000FF;
+	}
+	a:hover{
+	cursor:pointer; 
+	cursor:hand;
+	}
+	.processingIntruction{
+		color:#0066CC;
+	}
+	.comment{
+		color:#686868;
+	}
+	</style>
+<script type="text/javascript">
+	function expandElement(oSelf)
+	{
+		var currentElement = oSelf.parentNode;
+		var texto = oSelf.innerHTML;
+		if (texto=="+")
+		{
+			showChilds(currentElement);
+			oSelf.innerHTML="-";
+		}else{
+			hideChilds(currentElement);
+			oSelf.innerHTML="+";
+		} 
+	}
+	function showChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			//alert(currentElement.nodeName);
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "block";
+		}
+	}
+	function hideChilds(element)
+	{
+		for (var x=0;x<element.childNodes.length;x++)
+		{
+			var currentElement = element.childNodes[x];
+			if(currentElement.nodeName.toUpperCase()=="UL") currentElement.style.display = "none";
+		}
+	}
+</script>
+</head>
+<body><ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:stylesheet</span> <span class="attName">
+							xmlns:xsl</span>="<span class="attValue">http://www.w3.org/1999/XSL/Transform</span>"
+					 <span class="attName">version</span>="<span class="attValue">1.0</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:attribute-set</span> <span class="attName">name</span>="<span class="attValue">sichtbar</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:attribute</span> <span class="attName">name</span>="<span class="attValue">border</span>"
+&gt;1&lt;<span class="nodeName">xsl:attribute</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:attribute</span> <span class="attName">name</span>="<span class="attValue">cellpadding</span>"
+&gt;3&lt;<span class="nodeName">xsl:attribute</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:attribute</span> <span class="attName">name</span>="<span class="attValue">cellspacing</span>"
+&gt;1&lt;<span class="nodeName">xsl:attribute</span>/&gt;</ul>&lt;<span class="nodeName">xsl:attribute-set</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:attribute-set</span> <span class="attName">name</span>="<span class="attValue">unsichtbar</span>"
+&gt;<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:attribute</span> <span class="attName">name</span>="<span class="attValue">border</span>"
+&gt;0&lt;<span class="nodeName">xsl:attribute</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:attribute</span> <span class="attName">name</span>="<span class="attValue">cellpadding</span>"
+&gt;3&lt;<span class="nodeName">xsl:attribute</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">&lt;<span class="nodeName">xsl:attribute</span> <span class="attName">name</span>="<span class="attValue">cellspacing</span>"
+&gt;1&lt;<span class="nodeName">xsl:attribute</span>/&gt;</ul>&lt;<span class="nodeName">xsl:attribute-set</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:template</span> <span class="attName">match</span>="<span class="attValue">/</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">html</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">head</span>&gt;&lt;<span class="nodeName">head</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">body</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:element</span> <span class="attName">name</span>="<span class="attValue">table</span>"
+ <span class="attName">use-attribute-sets</span>="<span class="attValue">sichtbar</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:for-each</span> <span class="attName">select</span>="<span class="attValue">test/eintrag</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">tr</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">td</span> <span class="attName">valign</span>="<span class="attValue">top</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">b</span>&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">begriff</span>"
+&gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">b</span>/&gt;</ul>&lt;<span class="nodeName">td</span>/&gt;</ul>
+<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">td</span> <span class="attName">valign</span>="<span class="attValue">top</span>"
+&gt;<ul class="wbcmsXMLNode">
+<a style="font-weight:bold;font-size:110%" onclick="expandElement(this)">-</a>&lt;<span class="nodeName">xsl:value-of</span> <span class="attName">select</span>="<span class="attValue">definition</span>"
+&gt;&lt;<span class="nodeName">xsl:value-of</span>/&gt;</ul>&lt;<span class="nodeName">td</span>/&gt;</ul>&lt;<span class="nodeName">tr</span>/&gt;</ul>&lt;<span class="nodeName">xsl:for-each</span>/&gt;</ul>&lt;<span class="nodeName">xsl:element</span>/&gt;</ul>&lt;<span class="nodeName">body</span>/&gt;</ul>&lt;<span class="nodeName">html</span>/&gt;</ul>&lt;<span class="nodeName">xsl:template</span>/&gt;</ul>&lt;<span class="nodeName">xsl:stylesheet</span>/&gt;</ul></body>
+</html>
