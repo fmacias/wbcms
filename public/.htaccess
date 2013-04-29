@@ -23,29 +23,8 @@ RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
 
 #auth
 authType Basic
-AuthName "wb editor"
-AuthUserFile /home/fernando/workspace/freeDOM/application/public/.htpasswd
-require user Susanne
-require user Fernando
-require user ArbeitsAmt
-require user ADVA
-require user dTestUser
-require user trollgames
-require user metron
-require user SlipShift
-require user dmc
-require user Interlake
-require user Pit-Cup
-require user CFutures
-require user ManjaKlein
-require user BallyWulff
-require user BallyWulff
-require user BallyWulff
-require user Nedo
-require user hays
-require user knewmedia
-require user anderson
-require user andersson
-require user workstation
+AuthName "Free-D.O.M."
+AuthUserFile /path/to/public/.htpasswd
+require user anonym
 
 
