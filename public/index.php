@@ -7,8 +7,7 @@ chdir(dirname(__DIR__));
 
 // Setup autoloading
 require 'init_autoloader.php';
-// Set Constants
-# get user
+// Set Constants by User
 FreeDOM\Model\Application::init($_SERVER['REMOTE_USER']);
 // Run the application!
 Zend\Mvc\Application::init(require 'config/application.config.php')->run();

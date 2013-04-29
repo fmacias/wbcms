@@ -26,9 +26,9 @@ Installation
 Using Composer (recommended)
 ----------------------------
 Installation:
-
-    curl -s https://getcomposer.org/installer | php --
     git clone https://github.com/fmacias/wbcms.git
+    cd wbcms
+    curl -s https://getcomposer.org/installer | php --
     php composer.phar install
    
 Set up a user:
