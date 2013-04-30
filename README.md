@@ -20,6 +20,19 @@ The application could be extended to edit big XML files with your browser,
 create a whole CMS, allow XPath expresions, create a visual Mapping Interface
 for XML Unification ( mapping ). Theses features are not available at today.
 
+Demo
+----
+
+You can find a demo of the application in follwing URL:
+
+http://www.wunderbit.com/wbcms
+
+User Name: ArbeitsAmt
+
+Password:  anonym
+
+Note that this version is older than the current one and its not a Zend Framework application. The routing its made just but some php files, but the functionallity its the same.
+
 Installation
 ------------
 
@@ -27,12 +40,16 @@ Using Composer (recommended)
 ----------------------------
 Installation:
     git clone https://github.com/fmacias/wbcms.git
+
     cd wbcms
+
     curl -s https://getcomposer.org/installer | php --
+
     php composer.phar install
    
 Set up a user:
-    rename the files htaccess.dist and htpasswd.dist
+
+    Rename the files htaccess.dist and htpasswd.dist
     and checkout them to modify one path.
 
     The application requires basic Autentification, so that its possible to
