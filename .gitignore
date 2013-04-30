@@ -3,5 +3,6 @@ composer.lock
 composer.phar
 vendor/
 public/users/Fernando/
-
+public/.htaccess
+public/.htpasswd
 
